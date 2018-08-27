@@ -22,7 +22,7 @@ import time
 
 import six
 
-import nxpy.core.async_subprocess
+import nxpy.core.nonblocking_subprocess
 import nxpy.command.error
 
 
@@ -320,9 +320,9 @@ class Interpreter(BaseInterpreter):
     r"""
     The actual Interpreter class.
     
-    This implementation uses a :py:class:`.core.async_subprocess.AsyncPopen` instance.
+    This implementation uses a :py:class:`.core.nonblocking_subprocess.NonblockingPopen` instance.
     
     """
     def __init__(self, cmd):
-        super(Interpreter, self).__init__(nxpy.core.async_subprocess.AsyncPopen(cmd.split(), 
+        super(Interpreter, self).__init__(nxpy.core.nonblocking_subprocess.NonblockingPopen(cmd.split(), 
                             stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE))
