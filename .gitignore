@@ -2,4 +2,6 @@
 /.??*/
 corelib/
 lib/
-
+__pycache__/
+.*.un~
+*~
