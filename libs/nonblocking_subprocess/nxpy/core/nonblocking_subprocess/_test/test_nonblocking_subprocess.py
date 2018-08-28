@@ -36,12 +36,12 @@ class NonblockingPopenTest(nxpy.test.test.TestCase):
         else:
             shell, commands, tail = ('sh', ('ls', 'echo HELLO WORLD'), '\n')
         
-        a = nxpy.core.async_subprocess.NonblockingPopen(shell, stdin=subprocess.PIPE,
+        a = nxpy.core.nonblocking_subprocess.NonblockingPopen(shell, stdin=subprocess.PIPE,
                 stdout=subprocess.PIPE)
-        _log.info(nxpy.core.async_subprocess.recv_some(a))
+        _log.info(nxpy.core.nonblocking_subprocess.recv_some(a))
         for cmd in commands:
-            nxpy.core.async_subprocess.send_all(a, cmd + tail)
-            _log.info(nxpy.core.async_subprocess.recv_some(a))
-        nxpy.core.async_subprocess.send_all(a, 'exit' + tail)
-        _log.info(nxpy.core.async_subprocess.recv_some(a, e=0))
+            nxpy.core.nonblocking_subprocess.send_all(a, cmd + tail)
+            _log.info(nxpy.core.nonblocking_subprocess.recv_some(a))
+        nxpy.core.nonblocking_subprocess.send_all(a, 'exit' + tail)
+        _log.info(nxpy.core.nonblocking_subprocess.recv_some(a, e=0))
         self.assertEqual(a.wait(), 0)
