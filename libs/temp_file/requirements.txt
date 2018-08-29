@@ -3,4 +3,6 @@
 ../file_object
 ../past
 ../path
+../temp_file
+../test
 -e .

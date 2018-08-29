@@ -39,5 +39,6 @@ setup(
     namespace_packages=['nxpy','nxpy.core'],
     packages=['nxpy.core.abstract'],
     install_requires=[
+        'six',
     ],
 )
