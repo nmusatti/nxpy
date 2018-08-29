@@ -1,4 +1,4 @@
-# nxpy.core ------------------------------------------------------------------
+# nxpy.temp_file -------------------------------------------------------------
 
 # Copyright Nicola Musatti 2018
 # Use, modification, and distribution are subject to the Boost Software
@@ -14,14 +14,14 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.core'
+lib_name = 'nxpy.test'
 
 setup(
     name=lib_name,
     version="1.0.0",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
-    description="Infrastructure common to the Nxpy libraries",
+    description="Test related utilities for the Nxpy libraries",
     license="Boost Software License version 1.0",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -36,8 +36,10 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Topic :: Software Development :: Libraries',
     ],
-    namespace_packages=['nxpy','nxpy.core'],
-    packages=['nxpy.core._impl'],
+    namespace_packages=['nxpy'],
+    packages=['nxpy.test'],
     install_requires=[
+        'nxpy.memo',
+        'nxpy.past',
     ],
 )
