@@ -17,7 +17,8 @@ from __future__ import absolute_import
 import codecs
 import os
 import os.path
-import pip
+import subprocess
+import sys
 
 from six import iteritems
 
@@ -47,11 +48,11 @@ def install_libs(sources, develop=False):
     wd = os.getcwd()
     for k, v in iteritems(sources):
         try:
-            os.chdir(os.path.join(wd, v.root_dir))
+            os.chdir(os.path.join(wd, v))
             if develop:
-                pip.main(['install', '-e', '.'])
+                subprocess.call([sys.executable, '-m', 'pip', 'install', '-e', '.'])
             else:
-                pip.main(['install', '.'])
+                subprocess.call([sys.executable, '-m', 'pip', 'install', '.'])
         except Exception as e:
             print("Oops, something went wrong installing", k)
             print(e)
@@ -77,7 +78,7 @@ with codecs.open(os.path.join(here,'DESCRIPTION.rst'), encoding='utf-8') as f:
 
 setup(
     name=PACKAGE_NAME,
-    version="0.1.0",
+    version="1.0.0",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
     description = "Nick's Python Toolchest",

@@ -36,10 +36,11 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Topic :: Software Development :: Libraries',
     ],
-    namespace_packages=['nxpy'],
-    packages=[lib_name],
+    namespace_packages=['nxpy','nxpy.core'],
+    packages=['nxpy.core.nonblocking_subprocess'],
     install_requires=[
         'six',
+        'pypiwin32; sys_platform == "win32"',
         'nxpy.past'
     ],
 )
