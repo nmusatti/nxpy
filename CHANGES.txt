@@ -1,0 +1,47 @@
+v0.6.0, XX/XX/XXXX - 
+    svn:     Partial support for modern externals format.
+
+v0.5.0, 31/05/2017 - Switch to the lxml library for XML support.
+    General: Added the new 'xml' package, functionally equivalent to 'etree', but based on lxml.
+    mvn:     Switched to 'xml' for XML support. Comments and CDATA sections are now preserved.
+    msvs:    Switched to 'xml' for XML support.
+
+v0.4.0, 26/03/2017 - Small changes.
+    General: Support for Python 3.5 and 3.6.
+             Small corrections.
+    svn:     Added the 'log()' method to 'Svn'.
+             Added the 'setignore()/getignore()' methods to 'Svn' and 'Wcopy' to handle svn:ignore.
+             The 'Svn.status()' method now returns a dictionary of 'Status' instances.
+             Tested with Subversion 1.7 and 1.9. Should also work with 1.6 and 1.8. 
+    maven:   This package now requires at least Python 2.7.
+             Implemented removal of dependencies and modules from POM's.
+    backup_file:
+             Added the 'BackupDir' class, to save a directory that must be modified.
+             'save()', 'commit()' and 'restore()' now raise exceptions in case of problems. Note
+             that this may cause the '__enter__()' method to raise.
+    core:    'file_object' rewritten in a more Pythonic style.
+
+v0.3.0, 30/11/2014 -- Port to Python 3.
+    core:    'async_subrocess.AsyncPopen', 'file.compare' have a new 'encoding' parameter.
+             Added the 'file.open_()' function, which, on Python 2, removes an 'encoding' argument
+             before calling 'open()'.
+             Added 'path.CurrentDirectory', a context manager to change current directory 
+             temporarily.
+
+v0.2.0, 15/05/2014 -- Many small changes.
+	General: Improved identification of supported releases.
+	         Improved documentation.
+	         Bug fixes.
+	core:    Added the 'past' module to handle version support.
+	         Added the 'path' module for filesystem related utilities.
+    msvs:    Improved support for Solution files.
+    svn:     Added the '--non-interactive' option to the executed command to avoid hanging on
+             invisible prompts.
+             Added options to specify username and/or passwords for commands that may require
+             authentication.
+             Added a 'version()' method that returns the available Subversion release.
+             Added support for Subversion 1.7 and 1.8 .
+    test:    Tests are now skipped rather than fail for modules not supported in specific releases.
+	         Introduced unittest2 for releases prior to 2.7 .
+
+v0.1.0, 29/01/2012 -- Initial public release.
