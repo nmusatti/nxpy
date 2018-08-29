@@ -25,6 +25,7 @@ from six import iteritems
 from setuptools import setup
 from setuptools.command.develop import develop
 from setuptools.command.install import install
+from setuptools.command.egg_info import egg_info
 
 PACKAGE_NAME = 'Nxpy'
 SOURCES = {
@@ -71,6 +72,12 @@ class InstallCmd(install):
         install_libs(SOURCES, develop=False)
         install.run(self)
 
+class EggInfoCmd(egg_info):
+    """ Add custom steps for the develop command """
+    def run(self):
+        install_libs(SOURCES, develop=True)
+        egg_info.run(self)
+
 here = os.path.abspath(os.path.dirname(__file__))
 
 with codecs.open(os.path.join(here,'DESCRIPTION.rst'), encoding='utf-8') as f:
@@ -103,5 +110,6 @@ setup(
     cmdclass={
         'install': InstallCmd,
         'develop': DevelopCmd,
+        'egg_info': EggInfoCmd,
     },
 )
