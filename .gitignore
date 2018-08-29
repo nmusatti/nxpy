@@ -3,5 +3,7 @@
 corelib/
 lib/
 __pycache__/
+*.egg-info/
+*.pyc
 .*.un~
 *~
