@@ -1,2 +1,5 @@
 --index-url https://pypi.python.org/simple
+../past
+../temp_file
+../test
 -e .

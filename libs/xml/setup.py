@@ -39,5 +39,9 @@ setup(
     namespace_packages=['nxpy'],
     packages=[lib_name],
     install_requires=[
+        'lxml',
+        'six',
+        'nxpy.core',
+        'nxpy.past',
     ],
 )

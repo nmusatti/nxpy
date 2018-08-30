@@ -14,14 +14,14 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.lib'
+lib_name = 'nxpy.ply'
 
 setup(
     name=lib_name,
     version="1.0.0",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
-    description="Library description",
+    description="Utilities for the PLY parser generator",
     license="Boost Software License version 1.0",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -39,5 +39,6 @@ setup(
     namespace_packages=['nxpy'],
     packages=[lib_name],
     install_requires=[
+        'ply',
     ],
 )

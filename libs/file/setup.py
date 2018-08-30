@@ -1,4 +1,4 @@
-# nxpy.corelib ---------------------------------------------------------------
+# nxpy.file ---------------------------------------------------------------
 
 # Copyright Nicola Musatti 2018
 # Use, modification, and distribution are subject to the Boost Software
@@ -14,14 +14,14 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.corelib'
+lib_name = 'nxpy.file'
 
 setup(
     name=lib_name,
     version="1.0.0",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
-    description="Library description",
+    description="File manipulation utilities",
     license="Boost Software License version 1.0",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -37,7 +37,9 @@ setup(
         'Topic :: Software Development :: Libraries',
     ],
     namespace_packages=['nxpy','nxpy.core'],
-    packages=['nxpy.core.corelib'],
+    packages=['nxpy.core.file'],
     install_requires=[
+        'six',
+        'nxpy.past',
     ],
 )

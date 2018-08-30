@@ -1,2 +1,7 @@
 --index-url https://pypi.python.org/simple
+../core
+../file_object
+../path
+../temp_file
+../test
 -e .
