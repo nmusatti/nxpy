@@ -1,19 +1,14 @@
-Nick's Python Toolchest - 0.5.0
-===============================
+Nick's Python Toolbox - WORK IN PROGRESS
+========================================
 
-Nxpy is an etherogeneous collection of useful modules, dealing with diverse topics such as 
-wrapping complex commands with API's or interacting with Java and .NET build systems. 
-There are also more basic utilities, such as automation of backup files, support for writing your 
+Nxpy is an etherogeneous collection of libraries, dealing with diverse topics such as 
+wrapping complex commands with API's, automation of backup files, support for writing your 
 own file-like objects and many other things.
 
-The library is being developed with Python 3.6 so as to be compatible with Python 2.7. Tests are run
-and most modules work also with 2.6, 3.3, 3.4 and 3.5. Some should still work with 3.2 and 2.5.
+The library is being developed with Python 3.7 so as to be compatible with Python 2.7. Tests are run
+and most modules work also with 3.4, 3.5 and 3.6. Some should still work with versions as early as
+3.2 and 2.5.
 
-The only enforced dependency is `six <http://pythonhosted.org/six/>`_. On Windows 
-`pywin32 <https://pypi.python.org/pypi/pywin32>`_ is required, but not enforced. Some packages have
-specific dependencies of their own:
-
- * :py:mod:`.ply` requires `PLY <http://www.dabeaz.com/ply/>`_;
- * :py:mod:`.scons` requires `SCons <http://www.scons.org/>`_;
- * :py:mod:`.wx` requires `wxPython <http://wxpython.org/>`_.
- * :py:mod:`.xml` requires `lxml <http://lxml.de/>`_.
+Originally the libraries resided on SourceForge <http://nxpy.sourceforge.net> and were distributed
+as a single package. Starting from release 1.0.0 each library will be packaged separatly even though
+they will all share this project.
