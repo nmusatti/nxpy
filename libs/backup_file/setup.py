@@ -42,6 +42,6 @@ setup(
         'six',
         'nxpy.core',
         'nxpy.file_object',
-        'nxpy.path,'
+        'nxpy.path',
     ],
 )

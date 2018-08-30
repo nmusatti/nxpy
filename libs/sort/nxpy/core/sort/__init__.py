@@ -1,1 +1,1 @@
-from .corelib import *
+from .sort import *

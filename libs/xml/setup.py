@@ -14,14 +14,14 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.lib'
+lib_name = 'nxpy.xml'
 
 setup(
     name=lib_name,
     version="1.0.0",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
-    description="Library description",
+    description="Utilities for the Lxml library",
     license="Boost Software License version 1.0",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
