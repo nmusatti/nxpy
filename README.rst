@@ -1,6 +1,9 @@
 Nick's Python Toolbox - WORK IN PROGRESS
 ========================================
 
+.. image:: https://travis-ci.org/nmusatti/nxpy.svg?branch=master
+    :target: https://travis-ci.org/nmusatti/nxpy
+
 Nxpy is an etherogeneous collection of libraries, dealing with diverse topics such as 
 wrapping complex commands with API's, automation of backup files, support for writing your 
 own file-like objects and many other things.
