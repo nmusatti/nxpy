@@ -30,16 +30,21 @@ from setuptools.command.egg_info import egg_info
 PACKAGE_NAME = 'Nxpy'
 SOURCES = {
   'nxpy.abstract'               : 'libs/abstract',
+  'nxpy.backup_file'            : 'libs/backup_file',
   'nxpy.command'                : 'libs/command',
   'nxpy.core'                   : 'libs/core',
+  'nxpy.file'                   : 'libs/file',
   'nxpy.file_object'            : 'libs/file_object',
   'nxpy.memo'                   : 'libs/memo',
   'nxpy.nonblocking_subprocess' : 'libs/nonblocking_subprocess',
   'nxpy.past'                   : 'libs/past',
   'nxpy.path'                   : 'libs/path',
+  'nxpy.ply'                    : 'libs/ply',
   'nxpy.sequence'               : 'libs/sequence',
+  'nxpy.sort'                   : 'libs/sort',
   'nxpy.temp_file'              : 'libs/temp_file',
   'nxpy.test'                   : 'libs/test',
+  'nxpy.xml'                    : 'libs/xml',
 }
 
 def install_libs(sources, develop=False):
@@ -73,7 +78,7 @@ class InstallCmd(install):
         install.run(self)
 
 class EggInfoCmd(egg_info):
-    """ Add custom steps for the develop command """
+    """ Add custom steps for the egg-info command """
     def run(self):
         install_libs(SOURCES, develop=True)
         egg_info.run(self)

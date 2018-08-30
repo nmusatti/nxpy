@@ -1,13 +1,18 @@
 --index-url https://pypi.python.org/simple
 ./libs/abstract
+./libs/backup_file
 ./libs/command
 ./libs/core
+./libs/file
 ./libs/file_object
 ./libs/memo
 ./libs/nonblocking_subprocess
 ./libs/past
 ./libs/path
+./libs/ply
 ./libs/sequence
+./libs/sort
 ./libs/temp_file
 ./libs/test
+./libs/xml
 -e .
