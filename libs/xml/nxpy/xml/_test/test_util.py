@@ -29,14 +29,16 @@ class UtilTest(nxpy.test.test.TestCase):
               r' http://maven.apache.org/maven-v4_0_0.xsd">' )
     _ns = nxpy.xml.util.Namespace("http://maven.apache.org/POM/4.0.0")
 
+    _dir_levels = 6
+    
     def setUp(self):
         self.base_dir = os.path.realpath(__file__)
-        for i in range(5):
+        for i in range(self._dir_levels):
             self.base_dir = os.path.split(self.base_dir)[0]
 
     def test_marshal_pass(self):
         base_dir = os.path.realpath(__file__)
-        for i in range(5):
+        for i in range(self._dir_levels):
             base_dir = os.path.split(base_dir)[0]
         src = os.path.join(base_dir, "test", "backup", "maven", "third", "trunk", "pom.xml")
         tree = nxpy.xml.util.parse(src)
