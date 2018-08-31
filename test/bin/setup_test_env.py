@@ -82,8 +82,11 @@ def main(msgs=False):
     wcopy_dir = os.path.join(base_dest_dir, "wcopy")
     os.mkdir(wcopy_dir)
     
-    aggrs = { "maven" : "aggregator", "msvs" : "solution" }
-    for pkg in ( "maven", "msvs"):
+    # The msvs library is not currently available
+    # aggrs = { "maven" : "aggregator", "msvs" : "solution" }
+    # for pkg in ( "maven", "msvs"):
+    aggrs = { "maven" : "aggregator" }
+    for pkg in ( "maven", ):
         if msgs:
             six.print_(("Importing test data for the " + pkg + " package"))
         url = repo_url + "/" + pkg
