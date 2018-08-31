@@ -109,11 +109,12 @@ def main(msgs=False):
         svn.commit(aggr_dir)
         svn.update(aggr_dir, ignore_externals=False)
 
-    if msgs:
-        six.print_("Copying test default configuration to the conf directory")
-    src_dir = os.path.join(base_src_dir, "conf")
-    dest_dir = os.path.join(base_dest_dir, "conf")
-    shutil.copytree(src_dir, dest_dir)
+    # The conf directory was only ever used by the nxpy.ccase library
+    # if msgs:
+    #     six.print_("Copying test default configuration to the conf directory")
+    # src_dir = os.path.join(base_src_dir, "conf")
+    # dest_dir = os.path.join(base_dest_dir, "conf")
+    # shutil.copytree(src_dir, dest_dir)
 
     if msgs:
         six.print_("Copying test data to the data directory")
