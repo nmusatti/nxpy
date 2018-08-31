@@ -62,30 +62,30 @@ def get_data(test, package):
         return None
 
 
-# class Env(EnvBase):
-#     def __init__(self, package):
-#         EnvBase.__init__(self, "wcopy")
-#         self.wcopy = os.path.join(self.elem_dir, package)
-#         rd = self._dir.base
-#         repo_dir = []
-#         while True:
-#             rd, d = os.path.split(rd)
-#             if d:
-#                 repo_dir.append(d)
-#             else:
-#                 rd = rd.replace(os.path.sep, "")
-#                 if rd:
-#                     repo_dir.append(rd)
-#                 break
-#         repo_dir.reverse()
-#         repo_dir.extend(("repo", package))
-#         self.repo = "file:///" + "/".join(repo_dir)
-#         self.backup = os.path.join(self._dir.base, "backup", package)
-# 
-# 
-# def get_env(test, package):
-#     try:
-#         return Env(package)
-#     except TestEnvNotSetError:
-#         test.skipTest("Test environment not set")
-#         return None
+class Env(EnvBase):
+    def __init__(self, package):
+        EnvBase.__init__(self, "wcopy")
+        self.wcopy = os.path.join(self.elem_dir, package)
+        rd = self._dir.base
+        repo_dir = []
+        while True:
+            rd, d = os.path.split(rd)
+            if d:
+                repo_dir.append(d)
+            else:
+                rd = rd.replace(os.path.sep, "")
+                if rd:
+                    repo_dir.append(rd)
+                break
+        repo_dir.reverse()
+        repo_dir.extend(("repo", package))
+        self.repo = "file:///" + "/".join(repo_dir)
+        self.backup = os.path.join(self._dir.base, "backup", package)
+
+
+def get_env(test, package):
+    try:
+        return Env(package)
+    except TestEnvNotSetError:
+        test.skipTest("Test environment not set")
+        return None

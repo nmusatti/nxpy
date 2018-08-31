@@ -1,0 +1,7 @@
+--index-url https://pypi.python.org/simple
+../command
+../core
+../past
+../temp_file
+../test
+-e .

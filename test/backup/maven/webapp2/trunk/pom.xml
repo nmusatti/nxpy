@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>owf.test</groupId>
+	<artifactId>webapp2</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>webapp2 JEE5 Webapp</name>
+	<parent>
+		<artifactId>test-dep</artifactId>
+		<groupId>owf.test</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../test-dep/pom.xml</relativePath>
+	</parent>
+    <scm>
+        <connection>scm:svn:file:///D:/svnroot/test/maven/webapp2/trunk</connection>
+        <url>http://localhost:7467/viewvc/test/maven/webapp2/trunk</url>
+    </scm>
+	<build>
+		<finalName>webapp2</finalName>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Releases</name>
+            <url>http://opmdev.owgroup.it:8082/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Snapshots</name>
+            <url>http://opmdev.owgroup.it:8082/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
