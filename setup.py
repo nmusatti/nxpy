@@ -87,7 +87,7 @@ class EggInfoCmd(egg_info):
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-with codecs.open(os.path.join(here,'DESCRIPTION.rst'), encoding='utf-8') as f:
+with codecs.open(os.path.join(here,'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
@@ -95,7 +95,7 @@ setup(
     version="1.0.0",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
-    description = "Nick's Python Toolchest",
+    description = "Nick's Python Toolbox",
     long_description = long_description,
     license="Boost Software License version 1.0",
     classifiers=[

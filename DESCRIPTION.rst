@@ -15,6 +15,8 @@ An etherogeneous collection of useful Python stuff. Contains the following libra
   * *sort*:        Sorting functions.
   * *temp_file*:   Temporary files and directories implemented as context managers.
   
+* *maven*:   A Python interface to the Maven build tool.
 * *ply*:     An object oriented wrapper for the PLY lexer/parser tool.
+* *svn*:     A wrapper for the Subversion version control tool.
 * *test*:    Testing related utilities.
 * *xml*:     XML related support classes, based on the lxml library.

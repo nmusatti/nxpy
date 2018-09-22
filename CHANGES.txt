@@ -1,4 +1,9 @@
-v0.6.0, XX/XX/XXXX - 
+v1.0.0, xx/xx/xxxx - First multiple release
+    General: The libraries have been split and each is packaged separately. The following libraries
+             never evolved beyond an embryonic stage and have not been ported over to GitHub: etree,
+             msvs, scons, wx. The ccase library has been moved to its own project.
+ 
+v0.6.0, 16/09/2018 - Last monolithic release
     svn:     Partial support for modern externals format.
 
 v0.5.0, 31/05/2017 - Switch to the lxml library for XML support.
