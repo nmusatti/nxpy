@@ -12,9 +12,16 @@ Packaging information.
 
 """
 
+import codecs
+import os
+
 from setuptools import setup
 
-lib_name = 'nxpy.past'
+lib_name = 'nxpy_past'
+
+here = os.path.abspath(os.path.dirname(__file__))
+with codecs.open(os.path.join(here,'README.rst'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     name=lib_name,
@@ -22,6 +29,7 @@ setup(
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
     description="Python version based conditionals",
+    long_description = long_description,
     license="Boost Software License version 1.0",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
