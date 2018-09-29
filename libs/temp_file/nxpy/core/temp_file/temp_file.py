@@ -1,11 +1,11 @@
-# nxpy.core package ----------------------------------------------------------
+# nxpy_temp_file --------------------------------------------------------------
 
-# Copyright Nicola Musatti 2010 - 2014
+# Copyright Nicola Musatti 2010 - 2018
 # Use, modification, and distribution are subject to the Boost Software
 # License, Version 1.0. (See accompanying file LICENSE.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt)
 
-# See http://nxpy.sourceforge.net for library home page. ---------------------
+# See https://github.com/nmusatti/nxpy/tree/master/libs/temp_file. ------------
 
 r"""
 Temporary files and directories.
