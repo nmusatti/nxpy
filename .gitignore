@@ -1,7 +1,9 @@
 /.??*
 /.??*/
 /tmp/
+build/
 corelib/
+dist/
 lib/
 __pycache__/
 *.egg-info/
