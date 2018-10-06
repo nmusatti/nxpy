@@ -14,7 +14,7 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.test'
+lib_name = 'nxpy_test'
 
 setup(
     name=lib_name,
@@ -39,7 +39,7 @@ setup(
     namespace_packages=['nxpy'],
     packages=['nxpy.test'],
     install_requires=[
-        'nxpy.memo',
-        'nxpy.past',
+        'nxpy_memo',
+        'nxpy_past',
     ],
 )

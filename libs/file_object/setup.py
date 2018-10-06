@@ -14,7 +14,7 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.file_object'
+lib_name = 'nxpy_file_object'
 
 setup(
     name=lib_name,

@@ -14,7 +14,7 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.memo'
+lib_name = 'nxpy_memo'
 
 setup(
     name=lib_name,
@@ -40,7 +40,7 @@ setup(
     packages=['nxpy.core.memo'],
     install_requires=[
         'six',
-        'nxpy.abstract',
-        'nxpy.past',
+        'nxpy_abstract',
+        'nxpy_past',
     ],
 )

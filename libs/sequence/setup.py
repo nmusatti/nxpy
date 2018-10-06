@@ -14,7 +14,7 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.sequence'
+lib_name = 'nxpy_sequence'
 
 setup(
     name=lib_name,

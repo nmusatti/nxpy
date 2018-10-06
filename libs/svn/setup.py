@@ -14,7 +14,7 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.svn'
+lib_name = 'nxpy_svn'
 
 setup(
     name=lib_name,
@@ -37,12 +37,12 @@ setup(
         'Topic :: Software Development :: Libraries',
     ],
     namespace_packages=['nxpy'],
-    packages=[lib_name],
+    packages=['nxpy.svn'],
     install_requires=[
         'six',
-        'nxpy.command',
-        'nxpy.core',
-        'nxpy.past',
-        'nxpy.temp_file',
+        'nxpy_command',
+        'nxpy_core',
+        'nxpy_past',
+        'nxpy_temp_file',
     ],
 )

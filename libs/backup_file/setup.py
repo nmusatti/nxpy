@@ -14,7 +14,7 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.backup_file'
+lib_name = 'nxpy_backup_file'
 
 setup(
     name=lib_name,
@@ -40,8 +40,8 @@ setup(
     packages=['nxpy.core.backup_file'],
     install_requires=[
         'six',
-        'nxpy.core',
-        'nxpy.file_object',
-        'nxpy.path',
+        'nxpy_core',
+        'nxpy_file_object',
+        'nxpy_path',
     ],
 )

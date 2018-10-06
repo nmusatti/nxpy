@@ -14,7 +14,7 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.file'
+lib_name = 'nxpy_file'
 
 setup(
     name=lib_name,
@@ -40,6 +40,6 @@ setup(
     packages=['nxpy.core.file'],
     install_requires=[
         'six',
-        'nxpy.past',
+        'nxpy_past',
     ],
 )

@@ -14,7 +14,7 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.maven'
+lib_name = 'nxpy_maven'
 
 setup(
     name=lib_name,
@@ -37,12 +37,12 @@ setup(
         'Topic :: Software Development :: Libraries',
     ],
     namespace_packages=['nxpy'],
-    packages=[lib_name],
+    packages=['nxpy.maven'],
     install_requires=[
         'lxml',
-        'nxpy.command',
-        'nxpy.core',
-        'nxpy.sequence',
-        'nxpy.xml',
+        'nxpy_command',
+        'nxpy_core',
+        'nxpy_sequence',
+        'nxpy_xml',
     ],
 )

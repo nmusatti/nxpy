@@ -14,7 +14,7 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.ply'
+lib_name = 'nxpy_ply'
 
 setup(
     name=lib_name,
@@ -37,7 +37,7 @@ setup(
         'Topic :: Software Development :: Libraries',
     ],
     namespace_packages=['nxpy'],
-    packages=[lib_name],
+    packages=['nxpy.ply'],
     install_requires=[
         'ply',
     ],

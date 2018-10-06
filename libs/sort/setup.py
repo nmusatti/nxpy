@@ -14,7 +14,7 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.sort'
+lib_name = 'nxpy_sort'
 
 setup(
     name=lib_name,

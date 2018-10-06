@@ -14,7 +14,7 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.xml'
+lib_name = 'nxpy_xml'
 
 setup(
     name=lib_name,
@@ -37,11 +37,11 @@ setup(
         'Topic :: Software Development :: Libraries',
     ],
     namespace_packages=['nxpy'],
-    packages=[lib_name],
+    packages=['nxpy.xml'],
     install_requires=[
         'lxml',
         'six',
-        'nxpy.core',
-        'nxpy.past',
+        'nxpy_core',
+        'nxpy_past',
     ],
 )

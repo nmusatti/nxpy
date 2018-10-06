@@ -14,7 +14,7 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.nonblocking_subprocess'
+lib_name = 'nxpy_nonblocking_subprocess'
 
 setup(
     name=lib_name,
@@ -41,6 +41,6 @@ setup(
     install_requires=[
         'six',
         'pypiwin32; sys_platform == "win32"',
-        'nxpy.past'
+        'nxpy_past'
     ],
 )

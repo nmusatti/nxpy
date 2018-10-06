@@ -14,7 +14,7 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.temp_file'
+lib_name = 'nxpy_temp_file'
 
 setup(
     name=lib_name,
@@ -39,8 +39,8 @@ setup(
     namespace_packages=['nxpy','nxpy.core'],
     packages=['nxpy.core.temp_file'],
     install_requires=[
-        'nxpy.file_object',
-        'nxpy.past',
-        'nxpy.path',
+        'nxpy_file_object',
+        'nxpy_past',
+        'nxpy_path',
     ],
 )

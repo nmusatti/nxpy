@@ -14,7 +14,7 @@ Packaging information.
 
 from setuptools import setup
 
-lib_name = 'nxpy.abstract'
+lib_name = 'nxpy_abstract'
 
 setup(
     name=lib_name,
