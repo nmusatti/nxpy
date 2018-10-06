@@ -27,4 +27,4 @@ fails::
 
 The library's documentation is available on `ReadTheDocs`_.
 
-.. ReadTheDocs: https://nxpy.readthedocs.io/en/latest/past.html
+.. _ReadTheDocs: https://nxpy.readthedocs.io/en/latest/past.html
