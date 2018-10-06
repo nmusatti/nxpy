@@ -16,7 +16,6 @@ from __future__ import absolute_import
 
 import codecs
 import os
-import os.path
 import subprocess
 import sys
 

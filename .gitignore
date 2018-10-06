@@ -1,6 +1,7 @@
 /.??*
 /.??*/
 /tmp/
+_build/
 build/
 corelib/
 dist/
