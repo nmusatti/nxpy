@@ -15,9 +15,6 @@
 Nick's Python Toolchest
 =======================
 
-.. note:: This is the legacy version of the Nxpy libraries, distributed as a single package and
-   hosted on SourceForge_. The project has moved to GitHub_.
-
 .. note:: The most `up to date version of the documentation`_ you are reading resides at the 
    `project's website`_ on SourceForge_.
 
@@ -25,13 +22,14 @@ Nick's Python Toolchest
 
    A few useful links:
    
-   * `The project's summary page`_
+   * `The project's page`_
    * `News, tips, etc.`_
    * `Developers' wiki`_
    * `The code!`_
    
    Previous versions:
    
+   * `Nxpy 0.6.0`_
    * `Nxpy 0.5.0`_
    * `Nxpy 0.4.0`_
    * `Nxpy 0.3.0`_
@@ -76,10 +74,11 @@ Indices and tables
 .. _`project's website`: http://nxpy.sourceforge.net/
 .. _SourceForge: http://sourceforge.net
 .. _GitHub: https://github.com/nmusatti/nxpy
-.. _`The project's summary page`: http://sourceforge.net/p/nxpy
+.. _`The project's page`: http://sourceforge.net/p/nxpy
 .. _`News, tips, etc.`: http://sourceforge.net/p/nxpy/blog
 .. _`Developers' wiki`: http://sourceforge.net/p/nxpy/wiki
 .. _`The code!`: http://sourceforge.net/p/nxpy/code
+.. _`Nxpy 0.6.0`: http://nxpy.sourceforge.net/0.6.0
 .. _`Nxpy 0.5.0`: http://nxpy.sourceforge.net/0.5.0
 .. _`Nxpy 0.4.0`: http://nxpy.sourceforge.net/0.4.0
 .. _`Nxpy 0.3.0`: http://nxpy.sourceforge.net/0.3.0

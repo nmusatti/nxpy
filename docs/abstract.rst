@@ -10,5 +10,5 @@
 ``abstract`` - Additions to the *abc* standard module
 =====================================================
 
-.. automodule:: nxpy.core.abstract
+.. automodule:: nxpy.core.abstract.abstract
    :exclude-members: __dict__, __module__, __weakref__, __init__, __isabstractmethod__, __slots__

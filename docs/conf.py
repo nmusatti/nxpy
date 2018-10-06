@@ -33,13 +33,7 @@ base_dir = os.path.abspath('../libs')
 
 dirs = [ os.path.join(base_dir, d) for d in os.listdir(base_dir) ]
 
-lib_dirs = [ d for d in dirs if os.path.isdir(d) ]
-
-print (lib_dirs)
-
-sys.path[0:0] = lib_dirs
-
-print(sys.path)
+sys.path[0:0] = [ d for d in dirs if os.path.isdir(d) ]
 
 # -- General configuration -----------------------------------------------------
 
