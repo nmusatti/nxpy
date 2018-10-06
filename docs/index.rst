@@ -15,31 +15,10 @@
 Nick's Python Toolchest
 =======================
 
-.. note:: The most `up to date version of the documentation`_ you are reading resides at the 
-   `project's website`_ on SourceForge_.
-
-.. sidebar:: About the Nxpy project
-
-   A few useful links:
-   
-   * `The project's page`_
-   * `News, tips, etc.`_
-   * `Developers' wiki`_
-   * `The code!`_
-   
-   Previous versions:
-   
-   * `Nxpy 0.6.0`_
-   * `Nxpy 0.5.0`_
-   * `Nxpy 0.4.0`_
-   * `Nxpy 0.3.0`_
-   * `Nxpy 0.2.0`_
-   * `Nxpy 0.1.0`_
-
 .. automodule:: nxpy
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    abstract.rst
    backup_file.rst
