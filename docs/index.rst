@@ -1,11 +1,11 @@
-.. nxpy documentation ---------------------------------------------------------
+.. nxpy documentation ----------------------------------------------------------
 
 .. Copyright Nicola Musatti 2010 - 2018
 .. Use, modification, and distribution are subject to the Boost Software
 .. License, Version 1.0. (See accompanying file LICENSE.txt or copy at
 .. http://www.boost.org/LICENSE_1_0.txt)
 
-.. See http://nxpy.sourceforge.net for library home page. ---------------------
+.. See https://github.com/nmusatti/nxpy. ---------------------------------------
 
 .. Nxpy documentation master file, created by
    sphinx-quickstart on Sat Apr 30 22:44:21 2011.
@@ -43,18 +43,24 @@ Nick's Python Toolchest
 .. toctree::
    :maxdepth: 2
 
-   core.rst
-   ccase.rst
+   abstract.rst
+   backup_file.rst
    command.rst
-   etree.rst
+   file_object.rst
+   file.rst
    maven.rst
-   msvs.rst
+   memo.rst
+   nonblocking_subprocess.rst
+   past.rst
+   path.rst
    ply.rst
-   scons.rst
+   sequence.rst
+   sort.rst
    svn.rst
+   temp_file.rst
    test.rst
-   wx.rst
    xml.rst
+   core.rst
    testing.rst
    doc_gen.rst
    releasing.rst
