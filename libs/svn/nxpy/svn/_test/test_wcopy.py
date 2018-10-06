@@ -53,4 +53,4 @@ class WcopyTest(nxpy.test.test.TestCase):
             f = "First.java"
             wcopy.delete_path(os.path.join(d, f))
             l = os.listdir(os.path.join(wcopy.dir, d))
-            self.assert_(f not in l)
+            self.assertTrue(f not in l)
