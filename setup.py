@@ -96,11 +96,15 @@ setup(
     author_email="nicola.musatti@gmail.com",
     description = "Nick's Python Toolbox",
     long_description = long_description,
-    license="Boost Software License version 1.0",
+    project_urls={
+        "Documentation": "https://nxpy.readthedocs.io/en/latest/",
+        "Source Code": "https://github.com/nmusatti/nxpy",
+    },
+    license="Boost Software License 1.0 (BSL-1.0)",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
-        'License :: OSI Approved',
+        'License :: OSI Approved :: Boost Software License 1.0 (BSL-1.0)',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',

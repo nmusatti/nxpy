@@ -1,6 +1,10 @@
 Nxpy Past
 =========
 
+You can install the library with pip::
+
+    pip install nxpy-past
+
 *Nxpy_past* provides ways to express conditions on the current Python version to help handling
 version differences::
 
@@ -20,3 +24,7 @@ fails::
    import nxpy.core.past
    
    nxpy.core.past.enforce_at_least(nxpy.core.past.V_2_6)
+
+The library's documentation is available on `ReadTheDocs`_.
+
+.. ReadTheDocs: https://nxpy.readthedocs.io/en/latest/past.html
