@@ -14,7 +14,7 @@
 ./libs/ply
 ./libs/sequence
 ./libs/sort
-./libs/svn
 ./libs/temp_file
+./libs/svn
 ./libs/test
 -e .
