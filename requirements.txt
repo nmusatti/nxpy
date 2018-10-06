@@ -5,6 +5,7 @@
 ./libs/core
 ./libs/file
 ./libs/file_object
+./libs/xml
 ./libs/maven
 ./libs/memo
 ./libs/nonblocking_subprocess
@@ -16,5 +17,4 @@
 ./libs/svn
 ./libs/temp_file
 ./libs/test
-./libs/xml
 -e .
