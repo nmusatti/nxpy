@@ -12,10 +12,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Nick's Python Toolchest
-=======================
 
-.. automodule:: nxpy
+Nick's Python Toolbox
+=====================
+
+Nxpy is an etherogeneous collection of libraries, dealing with diverse topics such as wrapping
+complex commands with API's, automation of backup files, support for writing your own file-like
+objects and many other things.
+
 
 .. toctree::
    :maxdepth: 1
@@ -42,6 +46,18 @@ Nick's Python Toolchest
    doc_gen.rst
    releasing.rst
 
+
+The libraries are being developed with Python 3.7 so as to be compatible with Python 2.7. Tests are
+run and most modules work also with 3.4, 3.5 and 3.6. Some should still work with versions as early
+as 3.2 and 2.5.
+
+Originally the libraries resided on `SourceForge`_ and were distributed as a single package.
+Starting from release 1.0.0 each library is being packaged separately even though they are all
+hosted within the same project on `GitHub`_.
+
+The Nxpy logo was drawn by Claudia Romano.
+
+
 Indices and tables
 ==================
 
@@ -49,18 +65,6 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-.. _`up to date version of the documentation`: http://nxpy.sourceforge.net/|release|
-.. _`project's website`: http://nxpy.sourceforge.net/
-.. _SourceForge: http://sourceforge.net
+
+.. _SourceForge: http://nxpy.sourceforge.net/
 .. _GitHub: https://github.com/nmusatti/nxpy
-.. _`The project's page`: http://sourceforge.net/p/nxpy
-.. _`News, tips, etc.`: http://sourceforge.net/p/nxpy/blog
-.. _`Developers' wiki`: http://sourceforge.net/p/nxpy/wiki
-.. _`The code!`: http://sourceforge.net/p/nxpy/code
-.. _`Nxpy 0.6.0`: http://nxpy.sourceforge.net/0.6.0
-.. _`Nxpy 0.5.0`: http://nxpy.sourceforge.net/0.5.0
-.. _`Nxpy 0.4.0`: http://nxpy.sourceforge.net/0.4.0
-.. _`Nxpy 0.3.0`: http://nxpy.sourceforge.net/0.3.0
-.. _`Nxpy 0.2.0`: http://nxpy.sourceforge.net/0.2.0
-.. _`Nxpy 0.1.0`: http://nxpy.sourceforge.net/0.1.0
-   
