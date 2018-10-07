@@ -12,9 +12,16 @@ Packaging information.
 
 """
 
+import codecs
+import os
+
 from setuptools import setup
 
 lib_name = 'nxpy_nonblocking_subprocess'
+
+here = os.path.abspath(os.path.dirname(__file__))
+with codecs.open(os.path.join(here,'README.rst'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     name=lib_name,

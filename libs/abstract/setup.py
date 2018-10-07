@@ -12,9 +12,16 @@ Packaging information.
 
 """
 
+import codecs
+import os
+
 from setuptools import setup
 
 lib_name = 'nxpy_abstract'
+
+here = os.path.abspath(os.path.dirname(__file__))
+with codecs.open(os.path.join(here,'README.rst'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     name=lib_name,
@@ -23,8 +30,8 @@ setup(
     author_email="nicola.musatti@gmail.com",
     description="Abstract class helpers",
     project_urls={
-        "Documentation": "https://nxpy.readthedocs.io/en/latest/",
-        "Source Code": "https://github.com/nmusatti/nxpy",
+        "Documentation": "https://nxpy.readthedocs.io/en/latest/abstract.html",
+        "Source Code": "https://github.com/nmusatti/nxpy/tree/master/libs/abstract",
     },
     license="Boost Software License 1.0 (BSL-1.0)",
     classifiers=[

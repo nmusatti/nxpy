@@ -12,9 +12,16 @@ Packaging information.
 
 """
 
+import codecs
+import os
+
 from setuptools import setup
 
 lib_name = 'nxpy_newlib'
+
+here = os.path.abspath(os.path.dirname(__file__))
+with codecs.open(os.path.join(here,'README.rst'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     name=lib_name,
@@ -22,11 +29,15 @@ setup(
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
     description="New library",
-    license="Boost Software License version 1.0",
+    project_urls={
+        "Documentation": "https://nxpy.readthedocs.io/en/latest/newlib.html",
+        "Source Code": "https://github.com/nmusatti/nxpy/tree/master/libs/newlib",
+    },
+    license="Boost Software License 1.0 (BSL-1.0)",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
-        'License :: OSI Approved',
+        'License :: OSI Approved :: Boost Software License 1.0 (BSL-1.0)',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
