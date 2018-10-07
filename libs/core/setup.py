@@ -12,9 +12,16 @@ Packaging information.
 
 """
 
+import codecs
+import os
+
 from setuptools import setup
 
 lib_name = 'nxpy_core'
+
+here = os.path.abspath(os.path.dirname(__file__))
+with codecs.open(os.path.join(here,'README.rst'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     name=lib_name,
@@ -23,8 +30,8 @@ setup(
     author_email="nicola.musatti@gmail.com",
     description="Infrastructure common to the Nxpy libraries",
     project_urls={
-        "Documentation": "https://nxpy.readthedocs.io/en/latest/",
-        "Source Code": "https://github.com/nmusatti/nxpy",
+        "Documentation": "https://nxpy.readthedocs.io/en/latest/core.html",
+        "Source Code": "https://github.com/nmusatti/nxpy/tree/master/libs/core",
     },
     license="Boost Software License 1.0 (BSL-1.0)",
     classifiers=[
@@ -40,8 +47,8 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Topic :: Software Development :: Libraries',
     ],
-    namespace_packages=['nxpy','nxpy.core'],
-    packages=['nxpy.core._impl'],
+    namespace_packages=['nxpy', 'nxpy.core'],
+    packages=['nxpy.core.error', 'nxpy.core._impl'],
     install_requires=[
     ],
 )
