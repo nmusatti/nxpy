@@ -5,7 +5,7 @@ You can install the library with pip::
 
     pip install nxpy-past
 
-*Nxpy_past* provides ways to express conditions on the current Python version to help handling
+*Nxpy Past* provides ways to express conditions on the current Python version to help handling
 version differences::
 
    import nxpy.core.past
