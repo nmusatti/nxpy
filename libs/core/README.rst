@@ -8,6 +8,5 @@ You can install the library with pip::
 *Nxpy Core* contains generic implementation components on which other libraries depend. It is not
 meant for standalone use. 
 
-The library's documentation is available on `ReadTheDocs`_.
-
-.. ReadTheDocs: https://nxpy.readthedocs.io/en/latest/core.html
+The library's documentation is available on
+`ReadTheDocs <https://nxpy.readthedocs.io/en/latest/core.html>`_.
