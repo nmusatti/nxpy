@@ -29,6 +29,7 @@ setup(
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
     description="A file-like object that keeps a copy of the file being edited",
+    long_description=long_description,
     project_urls={
         "Documentation": "https://nxpy.readthedocs.io/en/latest/",
         "Source Code": "https://github.com/nmusatti/nxpy",

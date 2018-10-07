@@ -29,6 +29,7 @@ setup(
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
     description="Abstract class helpers",
+    long_description=long_description,
     project_urls={
         "Documentation": "https://nxpy.readthedocs.io/en/latest/abstract.html",
         "Source Code": "https://github.com/nmusatti/nxpy/tree/master/libs/abstract",

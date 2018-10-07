@@ -29,6 +29,7 @@ setup(
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
     description="subprocess.Popen subclass using non-blocking I/O",
+    long_description=long_description,
     project_urls={
         "Documentation": "https://nxpy.readthedocs.io/en/latest/",
         "Source Code": "https://github.com/nmusatti/nxpy",

@@ -28,7 +28,8 @@ setup(
     version="1.0.0",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
-    description="New library",
+    description="New library template",
+    long_description=long_description,
     project_urls={
         "Documentation": "https://nxpy.readthedocs.io/en/latest/newlib.html",
         "Source Code": "https://github.com/nmusatti/nxpy/tree/master/libs/newlib",
