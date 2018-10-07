@@ -25,6 +25,5 @@ fails::
    
    nxpy.core.past.enforce_at_least(nxpy.core.past.V_2_6)
 
-The library's documentation is available on `ReadTheDocs`_.
-
-.. _ReadTheDocs: https://nxpy.readthedocs.io/en/latest/past.html
+The library's documentation is available on
+`ReadTheDocs <https://nxpy.readthedocs.io/en/latest/past.html>`_.
