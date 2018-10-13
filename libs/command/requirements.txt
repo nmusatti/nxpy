@@ -1,5 +1,6 @@
 --index-url https://pypi.python.org/simple
 ../core
+../nonblocking_subprocess
 ../sequence
 ../test
 -e .

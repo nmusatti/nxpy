@@ -1,5 +1,5 @@
-Nick's Python Toolbox - WORK IN PROGRESS
-========================================
+Nick's Python Toolbox
+=====================
 
 .. image:: https://travis-ci.org/nmusatti/nxpy.svg?branch=master
     :target: https://travis-ci.org/nmusatti/nxpy

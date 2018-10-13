@@ -10,6 +10,9 @@
 r"""
 Packaging information.
 
+Note that this setup is only used for development and testing.
+A single package including all the libraries is not currently available.
+
 """
 
 from __future__ import absolute_import
@@ -75,13 +78,13 @@ class DevelopCmd(develop):
 class InstallCmd(install):
     """ Add custom steps for the install command """
     def run(self):
-        install_libs(SOURCES, develop=False)
+#        install_libs(SOURCES, develop=False)
         install.run(self)
 
 class EggInfoCmd(egg_info):
     """ Add custom steps for the egg-info command """
     def run(self):
-        install_libs(SOURCES, develop=True)
+#        install_libs(SOURCES, develop=True)
         egg_info.run(self)
 
 here = os.path.abspath(os.path.dirname(__file__))
