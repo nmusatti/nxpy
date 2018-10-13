@@ -53,6 +53,7 @@ setup(
     install_requires=[
         'six',
         'nxpy_core',
+        'nxpy_nonblocking_subprocess',
         'nxpy_sequence',
     ],
 )
