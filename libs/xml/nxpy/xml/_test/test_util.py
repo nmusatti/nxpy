@@ -61,3 +61,20 @@ class UtilTest(nxpy.test.test.TestCase):
         self.assertEqual(count, length)
         for m in modules:
             self.assertEqual(m.find(" "), -1)
+
+    _mapping = r'''
+<parent>
+    <root_tag>
+        <key1>value1</key1>
+        <key2>value2</key2>
+    </root_tag>
+</parent>
+'''
+            
+    def test_mapping_element(self):
+        tree = lxml.etree.fromstring(self._mapping)
+        me = nxpy.xml.util.MappingElement(tree, 'root_tag')
+        for k in me:
+            if k == 'key2':
+                return
+        self.fail("Element with key 'key2' and value 'value2' expected")

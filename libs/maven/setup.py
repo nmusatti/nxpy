@@ -52,6 +52,7 @@ setup(
     packages=['nxpy.maven'],
     install_requires=[
         'lxml',
+        'six',
         'nxpy_command',
         'nxpy_core',
         'nxpy_sequence',

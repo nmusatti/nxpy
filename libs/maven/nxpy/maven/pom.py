@@ -19,6 +19,8 @@ import os.path
 
 import lxml.etree
 
+import six
+
 import nxpy.xml.util
 import nxpy.maven.artifact
 
@@ -46,12 +48,12 @@ class MissingModuleError(ValueError):
     pass
 
 
-class DependencyIterator(collections.Iterator):
+class DependencyIterator(six.Iterator):
     def __init__(self, deps):
         self.iter = iter(deps.dependencies)
 
     def __next__(self):
-        return next(self.iter)[1]
+        return six.advance_iterator(self.iter)[1]
 
 
 class Dependencies(object):
@@ -107,7 +109,7 @@ class Dependencies(object):
             p.text = artifact.packaging
             p.tail = d.tail + "    "
         else:
-            v.tail = d.tail + "    "            
+            v.tail = d.tail + "    "
         art = nxpy.maven.artifact.Artifact(d)
         art._modified = True
         index = 0

@@ -124,6 +124,13 @@ class DependenciesTest(PomTestBase):
         self.assertFalse(deps.contains(pom.artifact))
         self.assertRaises(nxpy.maven.pom.MissingArtifactError, deps.remove, pom.artifact)
 
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
+    def test_iterator_pass(self):
+        for d in self.dep_pom.dependencyManagement:
+            if d.artifactId == 'second':
+                return
+        self.fail("Artifact named 'second' expected")
+
 
 class DistributionManagementTest(PomTestBase):
     @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)

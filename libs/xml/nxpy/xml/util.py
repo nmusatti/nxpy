@@ -130,17 +130,17 @@ class ContainerElementMixin(Namespace):
         return len(self.root) if self.root is not None else 0
 
 
-class MappingElementIterator(collections.Iterator):
+class MappingElementIterator(six.Iterator):
     r"""
     Iterator over a 'MappingElement'.
 
     """
     def __init__(self, element):
         self.element = element
-        self.iter = element.getchildren().iter()
+        self.iter = iter(element.root.getchildren())
 
     def __next__(self):
-        return self.element.get_tag(next(self.iter))
+        return self.element.get_tag(six.advance_iterator(self.iter))
 
 
 class MappingElement(ContainerElementMixin, collections.MutableMapping):
