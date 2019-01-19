@@ -25,7 +25,7 @@ with codecs.open(os.path.join(here,'README.rst'), encoding='utf-8') as f:
 
 setup(
     name=lib_name,
-    version="1.0.1rc1",
+    version="1.0.1",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
     description="Utilities for the Maven build tool",
