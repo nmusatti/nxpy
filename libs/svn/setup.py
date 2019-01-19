@@ -28,7 +28,7 @@ setup(
     version="1.0.0",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
-    description="Library description",
+    description="Python wrapper for Subversion",
     long_description=long_description,
     project_urls={
         "Documentation": "https://nxpy.readthedocs.io/en/latest/",
