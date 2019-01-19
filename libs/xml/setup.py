@@ -1,6 +1,6 @@
 # nxpy_xml --------------------------------------------------------------------
 
-# Copyright Nicola Musatti 2018
+# Copyright Nicola Musatti 2018 - 2019
 # Use, modification, and distribution are subject to the Boost Software
 # License, Version 1.0. (See accompanying file LICENSE.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt)
@@ -25,7 +25,7 @@ with codecs.open(os.path.join(here,'README.rst'), encoding='utf-8') as f:
 
 setup(
     name=lib_name,
-    version="1.0.0",
+    version="1.0.1rc1",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
     description="Utilities for the Lxml library",
