@@ -1,1 +1,3 @@
+v1.0.1, 21/01/2019 - Implemented the 'move' command.
+
 v1.0.0, 13/10/2018 - First separate release.
