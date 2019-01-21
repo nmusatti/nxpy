@@ -1,8 +1,10 @@
-v1.0.0, xx/xx/xxxx - First multiple release
+v1.0.1, 20/01/2019 - Bug fixes
+
+v1.0.0, 13/10/2018 - First multiple release
     General: The libraries have been split and each is packaged separately. The following libraries
              never evolved beyond an embryonic stage and have not been ported over to GitHub: etree,
              msvs, scons, wx. The ccase library has been moved to its own project.
- 
+
 v0.6.0, 16/09/2018 - Last monolithic release
     svn:     Partial support for modern externals format.
 
