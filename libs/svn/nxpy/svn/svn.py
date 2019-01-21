@@ -168,6 +168,11 @@ class Svn(nxpy.command.command.Command):
                     message="\"[" + __name__ + "] Copy from " + src + "\"")
         self.run(op, debug)
 
+    def move(self, src, dest, debug=None, **options):
+        op = Parser("move", ( src, dest ), options, username="", password="", 
+                    message="\"[" + __name__ + "] Move from " + src + "\"")
+        self.run(op, debug)
+
     def _delete_paths(self, debug, *paths, **options):
         op = Parser("delete", paths, options, keep_local=False)
         self.run(op, debug)
