@@ -1,6 +1,6 @@
 # nxpy_svn --------------------------------------------------------------------
 
-# Copyright Nicola Musatti 2010 - 2018
+# Copyright Nicola Musatti 2010 - 2019
 # Use, modification, and distribution are subject to the Boost Software
 # License, Version 1.0. (See accompanying file LICENSE.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt)
@@ -106,7 +106,7 @@ class Parser(nxpy.command.option.Parser):
 
 class Svn(nxpy.command.command.Command):
     r"""The actual wrapper."""
-    def __init__(self, debug=None):
+    def __init__(self, debug=False):
         super(Svn, self).__init__("svn --non-interactive", debug)
         self._version = None
     
@@ -130,9 +130,12 @@ class Svn(nxpy.command.command.Command):
         return out.split()
     
     def mkdir(self, *targets, **options):
+        debug = options.get("debug")
+        if debug is not None:
+            del options["debug"]
         op = Parser("mkdir", targets, options, parents=False, username="", password="",
                 message="\"[" + __name__ + "] Make dir(s) " + ", ".join(targets) + "\"")
-        self.run(op)
+        self.run(op, debug)
 
     def status(self, *targets, **options):
         op = Parser("status", targets, options, ignore=True, quiet=True, ignore_externals=True)
@@ -144,31 +147,34 @@ class Svn(nxpy.command.command.Command):
                 res.append(Status(l))
         return res
 
-    def import_(self, src, dest, debug=None, **options):
+    def import_(self, src, dest, debug=False, **options):
         op = Parser("import", ( src, dest ), {}, username="", password="", 
                     message="\"[" + __name__ + "] Import from " + src + "\"")
         self.run(op, debug)
 
-    def checkout(self, src, dest, debug=None, **options):
+    def checkout(self, src, dest, debug=False, **options):
         op = Parser("checkout", ( src, dest ), options, username="", password="", 
                 ignore_externals=True)
         self.run(op, debug)
 
     def update(self, *targets, **options):
+        debug = options.get("debug")
+        if debug is not None:
+            del options["debug"]
         op = Parser("update", targets, options, ignore_externals=True)
-        self.run(op)
+        self.run(op, debug)
 
-    def commit(self, src, debug=None, **options):
+    def commit(self, src, debug=False, **options):
         op = Parser("commit", ( src, ), options, username="", password="", 
                     message="\"[" + __name__ + "] Commit from " + src + "\"")
         self.run(op, debug)
 
-    def copy(self, src, dest, debug=None, **options):
+    def copy(self, src, dest, debug=False, **options):
         op = Parser("copy", ( src, dest ), options, ignore_externals=True, username="", password="", 
                     message="\"[" + __name__ + "] Copy from " + src + "\"")
         self.run(op, debug)
 
-    def move(self, src, dest, debug=None, **options):
+    def move(self, src, dest, debug=False, **options):
         op = Parser("move", ( src, dest ), options, username="", password="", 
                     message="\"[" + __name__ + "] Move from " + src + "\"")
         self.run(op, debug)
@@ -234,6 +240,8 @@ class Svn(nxpy.command.command.Command):
     
     def propset(self, name, *targets, **options):
         debug = options.get("debug")
+        if debug is not None:
+            del options["debug"]
         value = options.get("value")
         if value:
             del options["value"]
@@ -242,7 +250,7 @@ class Svn(nxpy.command.command.Command):
             op = Parser("propset", ( name, ) + targets, options, file="", username="", password="")
         self.run(op, debug)
         
-    def setexternals(self, externals, d, username="", password=""):
+    def setexternals(self, externals, d, username="", password="", debug=False):
         nxpy.core.past.enforce_at_least(nxpy.core.past.V_2_6)
         with nxpy.core.temp_file.TempFile(mode="w+", prefix="svn_setexternals") as f:
             for k, v in six.iteritems(externals):
@@ -250,9 +258,9 @@ class Svn(nxpy.command.command.Command):
             f.seek(0, os.SEEK_SET)
             _log.debug(f.read())
             f.close()
-            self.propset("svn:externals", d, file=f.name, username=username, password=password)
+            self.propset("svn:externals", d, file=f.name, username=username, password=password, debug=debug)
 
-    def setignore(self, ignore, d, username="", password=""):
+    def setignore(self, ignore, d, username="", password="", debug=False):
         nxpy.core.past.enforce_at_least(nxpy.core.past.V_2_6)
         with nxpy.core.temp_file.TempFile(mode="w+", prefix="svn_setignore") as f:
             for v in ignore:
@@ -260,7 +268,7 @@ class Svn(nxpy.command.command.Command):
             f.seek(0, os.SEEK_SET)
             _log.debug(f.read())
             f.close()
-            self.propset("svn:ignore", d, file=f.name, username=username, password=password)
+            self.propset("svn:ignore", d, file=f.name, username=username, password=password, debug=debug)
 
     def diff(self, *targets, **options):
         op = Parser("diff", targets, options, summarize=False, revision=None)
