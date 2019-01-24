@@ -148,9 +148,13 @@ class Svn(nxpy.command.command.Command):
         return res
 
     def import_(self, src, dest, debug=False, **options):
-        op = Parser("import", ( src, dest ), {}, username="", password="", 
+        op = Parser("import", ( src, dest ), options, username="", password="", 
                     message="\"[" + __name__ + "] Import from " + src + "\"")
         self.run(op, debug)
+
+    def export(self, src, dest, **options):
+        op = Parser("export", ( src, dest ), options)
+        self.run(op)
 
     def checkout(self, src, dest, debug=False, **options):
         op = Parser("checkout", ( src, dest ), options, username="", password="", 
@@ -176,7 +180,7 @@ class Svn(nxpy.command.command.Command):
 
     def move(self, src, dest, debug=False, **options):
         op = Parser("move", ( src, dest ), options, username="", password="", 
-                    message="\"[" + __name__ + "] Move from " + src + "\"")
+                    message="\"[" + __name__ + "] Move from " + src + " to " + dest + "\"")
         self.run(op, debug)
 
     def _delete_paths(self, debug, *paths, **options):
