@@ -15,7 +15,13 @@ Requires at least Python 2.6. Simple import breaks on Python 2.5
 """
 from __future__ import absolute_import
 
-import collections
+import nxpy.core.past
+
+if nxpy.core.past.V_3_3.at_least():
+    from collections.abc import MutableMapping, MutableSequence
+else:
+    from collections import MutableMapping, MutableSequence
+
 import re
 
 import lxml.etree
@@ -23,7 +29,6 @@ import lxml.etree
 import six
 
 import nxpy.core.error
-import nxpy.core.past
 
 nxpy.core.past.enforce_at_least(nxpy.core.past.V_2_6)
 
@@ -143,7 +148,7 @@ class MappingElementIterator(six.Iterator):
         return self.element.get_tag(six.advance_iterator(self.iter))
 
 
-class MappingElement(ContainerElementMixin, collections.MutableMapping):
+class MappingElement(ContainerElementMixin, MutableMapping):
     r"""
     Provide a tag/text map for the children of the 'root_tag' descendent of 'parent'. Given:
 
@@ -194,7 +199,7 @@ class MappingElement(ContainerElementMixin, collections.MutableMapping):
         return MappingElementIterator(self)
 
 
-class SequenceElement(ContainerElementMixin, collections.MutableSequence):
+class SequenceElement(ContainerElementMixin, MutableSequence):
     r"""
     Provide a sequence of the values of the children tagged 'element_tag' of the 'root_tag' 
     descendent of 'parent'. Given:
