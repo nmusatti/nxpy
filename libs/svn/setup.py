@@ -25,7 +25,7 @@ with codecs.open(os.path.join(here,'README.rst'), encoding='utf-8') as f:
 
 setup(
     name=lib_name,
-    version="1.0.0",
+    version="1.0.3rc1",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
     description="Python wrapper for Subversion",

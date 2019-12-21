@@ -1,1 +1,5 @@
-v1.0.0, xx/xx/xxxx - First separate release.
+v1.0.2, 22/01/2019 - Corrected and extended support for debug mode.
+
+v1.0.1, 21/01/2019 - Implemented the 'move' command.
+
+v1.0.0, 13/10/2018 - First separate release.

@@ -1,6 +1,6 @@
 # nxpy_svn --------------------------------------------------------------------
 
-# Copyright Nicola Musatti 2010 - 2018
+# Copyright Nicola Musatti 2010 - 2019
 # Use, modification, and distribution are subject to the Boost Software
 # License, Version 1.0. (See accompanying file LICENSE.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt)
@@ -71,6 +71,21 @@ class SvnTest(nxpy.test.test.TestCase):
             self.svn.import_(path, u, username=getpass.getuser())
             info = self.svn.info(u)
             self.assertEqual(u.lower(), info.url.lower())
+
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_6)
+    def test_export_pass(self):
+        with nxpy.core.temp_file.TempDir(prefix="test_svn_") as d:
+            repo = os.path.join(d.name, "repo")
+            u = nxpy.svn.svnadmin.SvnAdmin().create(repo)
+            path = os.path.join(self.env.backup, "first")
+            u += "/first"
+            self.svn.import_(path, u, username=getpass.getuser())
+            exp = os.path.join(d.name, "export")
+            self.svn.export(u + "/trunk", exp)
+            pom = os.path.join(exp, "pom.xml")
+            self.assertTrue(os.access(pom, os.R_OK))
+            f = open(pom, "r").read()
+            self.assertNotEqual(f.find("0.0.1-SNAPSHOT"), -1)
             
     @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_6)
     def test_copy_pass(self):
@@ -88,6 +103,30 @@ class SvnTest(nxpy.test.test.TestCase):
             bu = tu.getbranch("BRANCH")
             info = self.svn.info(branch)
             self.assertEqual(str(bu).lower(), info.url.lower())
+
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_6)
+    def test_move_pass(self):
+        with nxpy.core.temp_file.TempDir(prefix="test_svn_") as d:
+            repo = os.path.join(d.name, "repo")
+            u = nxpy.svn.svnadmin.SvnAdmin().create(repo)
+            path = os.path.join(self.env.backup, "first")
+            u += "/first"
+            self.svn.import_(path, u)
+            self.svn.mkdir(u + "/tags", u + "/branches")
+            trunk = u + "/trunk"
+            branch = u + "/branches/BRANCH"
+            branch2 = u + "/branches/BRANCH2"
+            self.svn.copy(trunk, branch)
+            self.svn.move(branch, branch2)
+            tu = nxpy.svn.url.Url(trunk)
+            try:
+                info = self.svn.info(branch)
+                self.fail("Should have raised 'nxpy.command.command.Error'")
+            except nxpy.command.command.Error:
+                pass
+            bu2 = tu.getbranch("BRANCH2")
+            info2 = self.svn.info(branch2)
+            self.assertEqual(str(bu2).lower(), info2.url.lower())
 
     @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_6)
     def test_delete_pass(self):
