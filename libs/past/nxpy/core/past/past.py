@@ -35,6 +35,8 @@ class Version(object):
         v = hex(self.version)
         return v[2] + "." + v[4] + "." + v[6]
 
+V_3_8 = Version(0x030800f0)
+
 V_3_7 = Version(0x030700f0)
 
 V_3_6 = Version(0x030600f0)
