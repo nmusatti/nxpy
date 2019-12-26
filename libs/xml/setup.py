@@ -25,11 +25,13 @@ with codecs.open(os.path.join(here,'README.rst'), encoding='utf-8') as f:
 
 setup(
     name=lib_name,
-    version="1.0.1",
+    version="1.0.2",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
     description="Utilities for the Lxml library",
     long_description=long_description,
+    long_description_content_type="text/x-rst",
+    url="https://github.com/nmusatti/nxpy",
     project_urls={
         "Documentation": "https://nxpy.readthedocs.io/en/latest/",
         "Source Code": "https://github.com/nmusatti/nxpy",
@@ -42,10 +44,10 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Topic :: Software Development :: Libraries',
     ],
     namespace_packages=['nxpy'],
