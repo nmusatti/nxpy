@@ -94,7 +94,7 @@ with codecs.open(os.path.join(here,'README.rst'), encoding='utf-8') as f:
 
 setup(
     name=PACKAGE_NAME,
-    version="1.0.3",
+    version="1.0.4",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
     description = "Nick's Python Toolbox",
@@ -111,10 +111,10 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Topic :: Software Development :: Libraries',
     ],
     install_requires=[
