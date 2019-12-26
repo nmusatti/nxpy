@@ -1,16 +1,11 @@
 .. nxpy documentation ----------------------------------------------------------
 
-.. Copyright Nicola Musatti 2010 - 2018
+.. Copyright Nicola Musatti 2010 - 2019
 .. Use, modification, and distribution are subject to the Boost Software
 .. License, Version 1.0. (See accompanying file LICENSE.txt or copy at
 .. http://www.boost.org/LICENSE_1_0.txt)
 
 .. See https://github.com/nmusatti/nxpy. ---------------------------------------
-
-.. Nxpy documentation master file, created by
-   sphinx-quickstart on Sat Apr 30 22:44:21 2011.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
 
 Nick's Python Toolbox
@@ -47,9 +42,11 @@ objects and many other things.
    releasing.rst
 
 
-The libraries are being developed with Python 3.7 so as to be compatible with Python 2.7. Tests are
-run and most modules work also with 3.4, 3.5 and 3.6. Some should still work with versions as early
-as 3.2 and 2.5.
+The libraries are being developed with Python 3.8 so as to be compatible with Python 2.7. Tests are
+run and most modules work also with 3.5, 3.6 and 3.7. Some should still work with versions as early
+as 3.2 and 2.5. There is no immediate plan to remove Python 2.x support, but in general earlier
+releases will only be supported as long as external tools, such as Travis or pip, keep supporting
+them. 
 
 Originally the libraries resided on `SourceForge`_ and were distributed as a single package.
 Starting from release 1.0.0 each library is being packaged separately even though they are all
