@@ -1,6 +1,6 @@
 .. nxpy documentation ----------------------------------------------------------
 
-.. Copyright Nicola Musatti 2017 - 2019
+.. Copyright Nicola Musatti 2017 - 2020
 .. Use, modification, and distribution are subject to the Boost Software
 .. License, Version 1.0. (See accompanying file LICENSE.txt or copy at
 .. http://www.boost.org/LICENSE_1_0.txt)
@@ -52,13 +52,13 @@ basic steps for the creation of a new library release are:
   +---------------------------+
   | 2.7                       |
   +---------------------------+
-  | 3.5                       |
-  +---------------------------+
   | 3.6                       |
   +---------------------------+
   | 3.7                       |
   +---------------------------+
   | 3.8                       |
+  +---------------------------+
+  | 3.9                       |
   +---------------------------+
 
   +---------------------------+

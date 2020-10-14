@@ -1,6 +1,6 @@
 # nxpy_past -------------------------------------------------------------------
 
-# Copyright Nicola Musatti 2013 - 2019
+# Copyright Nicola Musatti 2013 - 2020
 # Use, modification, and distribution are subject to the Boost Software
 # License, Version 1.0. (See accompanying file LICENSE.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt)
@@ -34,6 +34,8 @@ class Version(object):
     def __str__(self):
         v = hex(self.version)
         return v[2] + "." + v[4] + "." + v[6]
+
+V_3_9 = Version(0x030900f0)
 
 V_3_8 = Version(0x030800f0)
 
