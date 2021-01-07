@@ -1,6 +1,6 @@
 # nxpy_svn --------------------------------------------------------------------
 
-# Copyright Nicola Musatti 2010 - 2019
+# Copyright Nicola Musatti 2010 - 2021
 # Use, modification, and distribution are subject to the Boost Software
 # License, Version 1.0. (See accompanying file LICENSE.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt)
@@ -43,7 +43,7 @@ class SvnTest(nxpy.test.test.TestCase):
 
     def test_version_pass(self):
         version = self.svn.version()
-        self.assertTrue(version[0] == 1 and version[1] in ( 6, 7, 8, 9 ))
+        self.assertTrue(version[0] == 1 and version[1] in ( 6, 7, 8, 9, 10 ))
 
     def test_info_pass(self):
         info = self.svn.info(self.dir)
