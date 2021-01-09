@@ -1,4 +1,4 @@
-v1.0.5, 17/10/2020 - Support for Python 3.9
+v1.0.5, 09/01/2021 - Support for Python 3.9
 
 v1.0.4, 26/12/2019 - Support for Python 3.8
     svn: Implemented the 'export' command.

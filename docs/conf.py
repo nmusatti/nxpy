@@ -2,7 +2,7 @@
 
 # nxpy documentation ----------------------------------------------------------
 
-# Copyright Nicola Musatti 2010 - 2020
+# Copyright Nicola Musatti 2010 - 2021
 # Use, modification, and distribution are subject to the Boost Software
 # License, Version 1.0. (See accompanying file LICENSE.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt)
@@ -59,7 +59,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Nxpy'
-copyright = u'2010 - 2020, Nicola Musatti'
+copyright = u'2010 - 2021, Nicola Musatti'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
