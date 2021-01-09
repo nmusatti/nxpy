@@ -1,6 +1,6 @@
 # nxpy_past -------------------------------------------------------------------
 
-# Copyright Nicola Musatti 2018 - 2020
+# Copyright Nicola Musatti 2018 - 2021
 # Use, modification, and distribution are subject to the Boost Software
 # License, Version 1.0. (See accompanying file LICENSE.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt)
@@ -25,7 +25,7 @@ with codecs.open(os.path.join(here,'README.rst'), encoding='utf-8') as f:
 
 setup(
     name=lib_name,
-    version="1.0.2rc1",
+    version="1.0.2",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
     description="Python version based conditionals",
@@ -44,10 +44,10 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Topic :: Software Development :: Libraries',
     ],
     namespace_packages=['nxpy','nxpy.core'],
