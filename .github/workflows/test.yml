@@ -16,6 +16,18 @@ jobs:
           - github: 3.6
             tox: py36
             cmd: python3
+          - github: 3.7
+            tox: py37
+            cmd: python3
+          - github: 3.8
+            tox: py38
+            cmd: python3
+          - github: 3.9
+            tox: py39
+            cmd: python3
+          - github: 3.10
+            tox: py310
+            cmd: python3
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
