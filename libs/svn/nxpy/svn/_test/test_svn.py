@@ -43,7 +43,7 @@ class SvnTest(nxpy.test.test.TestCase):
 
     def test_version_pass(self):
         version = self.svn.version()
-        self.assertTrue(version[0] == 1 and version[1] in ( 6, 7, 8, 9, 10 ))
+        self.assertTrue(version[0] == 1 and version[1] in ( 6, 7, 8, 9, 10, 11, 12, 13 ))
 
     def test_info_pass(self):
         info = self.svn.info(self.dir)
