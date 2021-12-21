@@ -1,9 +1,7 @@
 Nick's Python Toolbox
 =====================
 
-.. image:: https://travis-ci.org/nmusatti/nxpy.svg?branch=master
-    :target: https://travis-ci.org/nmusatti/nxpy
-    :alt: Build Status
+.. image:: https://github.com/nmusatti/nxpy/actions/workflows/test.yml/badge.svg
 
 .. image:: https://readthedocs.org/projects/nxpy/badge/?version=latest
     :target: https://nxpy.readthedocs.io/en/latest/?badge=latest
