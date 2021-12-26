@@ -94,7 +94,7 @@ with codecs.open(os.path.join(here,'README.rst'), encoding='utf-8') as f:
 
 setup(
     name=PACKAGE_NAME,
-    version="1.0.6rc1",
+    version="1.0.6",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
     description = "Nick's Python Toolbox",
