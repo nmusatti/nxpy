@@ -1,6 +1,6 @@
 .. nxpy documentation ----------------------------------------------------------
 
-.. Copyright Nicola Musatti 2017 - 2020
+.. Copyright Nicola Musatti 2017 - 2021
 .. Use, modification, and distribution are subject to the Boost Software
 .. License, Version 1.0. (See accompanying file LICENSE.txt or copy at
 .. http://www.boost.org/LICENSE_1_0.txt)
@@ -25,8 +25,8 @@ basic steps for the creation of a new library release are:
   + ``README.rst``
   + ``setup.py``
 
-* Commit to ``master`` any remaining change and push upstream. This should trigger Travis tests
-  against all the supported Python versions.
+* Commit to ``master`` any remaining change and push upstream. This should trigger GitHub Actions
+  tests against all the supported Python versions.
 * Bump the library version number according to semantic versioning: increment the minor version
   element if the new release includes API breaking changes, the increment version element otherwise.
   Add ``rc1`` to the release number to mark the fact that this is a release candidate.
@@ -59,6 +59,8 @@ basic steps for the creation of a new library release are:
   | 3.8                       |
   +---------------------------+
   | 3.9                       |
+  +---------------------------+
+  | 3.10                      |
   +---------------------------+
 
   +---------------------------+
