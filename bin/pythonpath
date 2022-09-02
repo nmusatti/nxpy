@@ -1,0 +1,21 @@
+# nxpy ------------------------------------------------------------------------
+
+# Copyright Nicola Musatti 2022
+# Use, modification, and distribution are subject to the Boost Software
+# License, Version 1.0. (See accompanying file LICENSE.txt or copy at
+# http://www.boost.org/LICENSE_1_0.txt)
+
+# See https://github.com/nmusatti/nxpy. ---------------------------------------
+
+# Adds all the libraries' directories to PYTHONPATH
+# To be sourced from the current shell
+
+pushd $(dirname $0) > /dev/null 2>&1
+cd ..
+base=$(PWD)/libs
+popd > /dev/null 2>&1
+
+export PYTHONPATH=${base}/abstract:${base}/backup_file:${base}/command:${base}/core:${base}/file:\
+${base}/file_object:${base}/maven:${base}/memo:${base}/nonblocking_subprocess:${base}/past:\
+${base}/path:${base}/ply:${base}/sequence:${base}/sequence:${base}/sort:${base}/svn:\
+${base}/temp_file:${base}/test:${base}/xml:$PYTHONPATH
