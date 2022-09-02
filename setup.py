@@ -1,6 +1,6 @@
 # nxpy ------------------------------------------------------------------------
 
-# Copyright Nicola Musatti 2018 - 2021
+# Copyright Nicola Musatti 2018 - 2022
 # Use, modification, and distribution are subject to the Boost Software
 # License, Version 1.0. (See accompanying file LICENSE.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt)
@@ -94,7 +94,7 @@ with codecs.open(os.path.join(here,'README.rst'), encoding='utf-8') as f:
 
 setup(
     name=PACKAGE_NAME,
-    version="1.0.6",
+    version="1.0.7",
     author="Nicola Musatti",
     author_email="nicola.musatti@gmail.com",
     description = "Nick's Python Toolbox",
@@ -115,8 +115,10 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Topic :: Software Development :: Libraries',
     ],
+    package_dir=SOURCES,
     install_requires=[
         'six',
     ],
