@@ -43,6 +43,8 @@ def main(msgs=False):
     except KeyError:
         env_dir = ""
     base_dest_dir = ""
+    if len(sys.argv) == 2:
+        env_dir = sys.argv[1]
     if msgs:
         base_dest_dir = input("Test data directory [" + env_dir + "]: ")
         six.print_("Directory:", base_dest_dir)

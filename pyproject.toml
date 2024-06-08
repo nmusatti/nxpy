@@ -1,13 +1,18 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+#requires = ["hatchling"]
+#build-backend = "hatchling.build"
+requires = [
+	"setuptools",
+	"six"
+]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "Nxpy"
 dynamic = ["version"]
 description = "Nick's Python Toolbox"
 readme = "README.rst"
-license = "Boost Software License 1.0 (BSL-1.0)"
+license.file = "LICENSE.txt"
 authors = [
     { name = "Nicola Musatti", email = "nicola.musatti@gmail.com" },
 ]

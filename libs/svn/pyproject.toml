@@ -1,13 +1,15 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+#requires = ["hatchling"]
+#build-backend = "hatchling.build"
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "nxpy-svn"
 dynamic = ["version"]
 description = "Python wrapper for Subversion"
 readme = "README.rst"
-license = "Boost Software License 1.0 (BSL-1.0)"
+license.file = "LICENSE.txt"
 authors = [
     { name = "Nicola Musatti", email = "nicola.musatti@gmail.com" },
 ]

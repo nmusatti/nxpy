@@ -1,13 +1,24 @@
+# nxpy_memo -------------------------------------------------------------------
+
+# Copyright Nicola Musatti 2024
+# Use, modification, and distribution are subject to the Boost Software
+# License, Version 1.0. (See accompanying file LICENSE.txt or copy at
+# http://www.boost.org/LICENSE_1_0.txt)
+
+# See https://github.com/nmusatti/nxpy/tree/master/libs/memo. -----------------
+
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+#requires = ["hatchling"]
+#build-backend = "hatchling.build"
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "nxpy-memo"
 dynamic = ["version"]
 description = "Base class to implement self-memoizing types"
 readme = "README.rst"
-license = "Boost Software License 1.0 (BSL-1.0)"
+license.file = "LICENSE.txt"
 authors = [
     { name = "Nicola Musatti", email = "nicola.musatti@gmail.com" },
 ]
