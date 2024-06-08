@@ -7,16 +7,10 @@ name: test
 
 jobs:
   test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         version:
-          - github: 2.7
-            tox: py27
-            cmd: python
-          - github: 3.6
-            tox: py36
-            cmd: python3
           - github: 3.7
             tox: py37
             cmd: python3
@@ -29,9 +23,15 @@ jobs:
           - github: "3.10"
             tox: py310
             cmd: python3
+          - github: "3.11"
+            tox: py311
+            cmd: python3
+          - github: "3.12"
+            tox: py312
+            cmd: python3
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with: 
           python-version: ${{ matrix.version.github }}
       - run: |
