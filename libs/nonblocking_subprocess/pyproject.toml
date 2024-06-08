@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nxpy-nonblocking-subprocess"
+dynamic = ["version"]
+description = "subprocess.Popen subclass using non-blocking I/O"
+readme = "README.rst"
+license = "Boost Software License 1.0 (BSL-1.0)"
+authors = [
+    { name = "Nicola Musatti", email = "nicola.musatti@gmail.com" },
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Boost Software License 1.0 (BSL-1.0)",
+    "Programming Language :: Python :: 2",
+    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.5",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+    "nxpy_past",
+    "pypiwin32; sys_platform == \"win32\"",
+    "six",
+]
+
+[project.urls]
+Documentation = "https://nxpy.readthedocs.io/en/latest/"
+Homepage = "https://github.com/nmusatti/nxpy"
+"Source Code" = "https://github.com/nmusatti/nxpy"
+
+[tool.hatch.version]
+path = "nxpy/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/nxpy",
+]
