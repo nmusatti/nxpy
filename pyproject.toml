@@ -38,10 +38,25 @@ dependencies = [
 Documentation = "https://nxpy.readthedocs.io/en/latest/"
 "Source Code" = "https://github.com/nmusatti/nxpy"
 
-[tool.hatch.version]
-path = "nxpy/__init__.py"
+[tool.setuptools]
+include-package-data = true
 
-[tool.hatch.build.targets.sdist]
-include = [
-    "/nxpy",
-]
+[tool.setuptools.package-dir]
+nxpy_abstract               = "libs/abstract"
+nxpy_backup_file            = "libs/backup_file"
+nxpy_command                = "libs/command"
+nxpy_core                   = "libs/core"
+nxpy_file                   = "libs/file"
+nxpy_file_object            = "libs/file_object"
+nxpy_maven                  = "libs/maven"
+nxpy_memo                   = "libs/memo"
+nxpy_nonblocking_subprocess = "libs/nonblocking_subprocess"
+nxpy_past                   = "libs/past"
+nxpy_path                   = "libs/path"
+nxpy_ply                    = "libs/ply"
+nxpy_sequence               = "libs/sequence"
+nxpy_sort                   = "libs/sort"
+nxpy_svn                    = "libs/svn"
+nxpy_temp_file              = "libs/temp_file"
+nxpy_test                   = "libs/test"
+nxpy_xml                    = "libs/xml"
