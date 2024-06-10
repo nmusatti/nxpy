@@ -38,4 +38,4 @@ jobs:
           ${{ matrix.version.cmd }} -m pip install --upgrade pip
           ${{ matrix.version.cmd }} -m pip install tox
       - run: |
-          tox -e ${{ matrix.version.tox }}-mylinux
+          tox -e ${{ matrix.version.tox }}-lnx
