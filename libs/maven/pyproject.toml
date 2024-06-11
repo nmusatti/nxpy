@@ -1,0 +1,58 @@
+# nxpy_maven ------------------------------------------------------------------
+
+# Copyright Nicola Musatti 2024
+# Use, modification, and distribution are subject to the Boost Software
+# License, Version 1.0. (See accompanying file LICENSE.txt or copy at
+# http://www.boost.org/LICENSE_1_0.txt)
+
+# See https://github.com/nmusatti/nxpy/tree/master/libs/maven. ----------------
+
+[build-system]
+#requires = ["hatchling"]
+#build-backend = "hatchling.build"
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nxpy-maven"
+dynamic = ["version"]
+description = "Utilities for the Maven build tool"
+readme = "README.rst"
+license.file = "LICENSE.txt"
+authors = [
+    { name = "Nicola Musatti", email = "nicola.musatti@gmail.com" },
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Boost Software License 1.0 (BSL-1.0)",
+    "Programming Language :: Python :: 2",
+    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.5",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+    "lxml",
+    "nxpy_command",
+    "nxpy_core",
+    "nxpy_sequence",
+    "nxpy_xml",
+    "six",
+]
+
+[project.urls]
+Documentation = "https://nxpy.readthedocs.io/en/latest/"
+Homepage = "https://github.com/nmusatti/nxpy"
+"Source Code" = "https://github.com/nmusatti/nxpy"
+
+[tool.hatch.version]
+path = "nxpy/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/nxpy",
+]
