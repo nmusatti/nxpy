@@ -54,7 +54,7 @@ setup(
     packages=['nxpy.core.nonblocking_subprocess'],
     install_requires=[
         'six',
-        'pypiwin32; sys_platform == "win32"',
+        'pywin32; sys_platform == "win32"',
         'nxpy_past'
     ],
 )
