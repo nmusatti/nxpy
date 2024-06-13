@@ -256,14 +256,21 @@ class Build(object):
         plugins = _ns.find(element, "plugins")
         if plugins is not None:
             self.plugins = Plugins(plugins)
+        self.pluginManagement = None
+        pinmgmt = _ns.find(element, "pluginManagement")
+        if pinmgmt is not None:
+            self.pluginManagement = Plugins(_ns.find(pinmgmt, "plugins"))
 
     def _saved(self):
         if self.plugins:
             self.plugins._saved()
+        if self.pluginManagement:
+            self.pluginManagement._saved()
 
     @property
     def modified(self):
-        return self.plugins and self.plugins.modified
+        return ( self.plugins and self.plugins.modified or
+                 self.pluginManagement and self.pluginManagement.modified )
     
     
 class Scm(object):
@@ -358,16 +365,12 @@ class Pom(object):
                         self.assembly_descriptor = os.path.normpath(os.path.join(self.dir, ad.text))
                         break
         self.dependencyManagement = None
-        self.buildManagement = None
         if self.artifact.packaging == "pom":
             depmgmt = None
             deps = _ns.find(self.root, "dependencyManagement")
             if deps is not None:
                 depmgmt = _ns.find(deps, "dependencies")
             self.dependencyManagement = Dependencies(depmgmt)
-            buildmgmt = _ns.find(self.root, "buildManagement")
-            if buildmgmt is not None:
-                self.buildManagement = Build(buildmgmt)
         self.properties = Properties(self.root)
         self.distributionManagement = None
         dm = _ns.find(self.root, "distributionManagement")
@@ -386,8 +389,7 @@ class Pom(object):
                  ( self.scm and self.scm.modified ) or 
                  self.properties.modified or 
                  ( self.distributionManagement and self.distributionManagement.modified ) or 
-                 ( self.build and self.build.modified ) or
-                 ( self.buildManagement and self.buildManagement.modified ) )
+                 ( self.build and self.build.modified ) )
 
     def write(self, where):
         if not where:
@@ -408,8 +410,6 @@ class Pom(object):
             self.modules._saved()
             if self.build:
                 self.build._saved()
-            if self.buildManagement:
-                self.buildManagement._saved()
             self.properties.modified = False
             return True
         return False
