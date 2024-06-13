@@ -132,6 +132,11 @@ class DependenciesTest(PomTestBase):
         self.fail("Artifact named 'second' expected")
 
 
+class PluginsTest(PomTestBase):
+    def setUp(self):
+        super(PluginsTest, self).setUp()
+
+
 class DistributionManagementTest(PomTestBase):
     @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
     def test_structure_pass(self):
@@ -177,6 +182,22 @@ class PomTest(PomTestBase):
             self.assertTrue(p.modified)
             p.save()
             self.assertFalse(p.modified)
+
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
+    def test_build_pass(self):
+        p = nxpy.maven.pom.Pom(os.path.join(self.dir, "patch", "pom.xml"))
+        self.assertTrue(p.build is not None)
+
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
+    def test_plugin_pass(self):
+        p = nxpy.maven.pom.Pom(os.path.join(self.dir, "patch", "pom.xml"))
+        self.assertTrue(p.build.plugins is not None)
+        map = None
+        for e in p.build.plugins:
+            if e.artifact.artifactId == "maven-assembly-plugin":
+                map = e
+                break
+        self.assertTrue(map is not None)
 
     @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
     def test_assembly_descriptor_pass(self):

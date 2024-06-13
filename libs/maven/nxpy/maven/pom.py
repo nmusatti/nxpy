@@ -188,6 +188,84 @@ class Modules(nxpy.xml.util.SequenceElement):
         del self[i]
 
 
+class Plugin(object):
+    def __init__(self, element):
+        self.element = element
+        self.artifact = nxpy.maven.artifact.Artifact(self.element)
+        self.dependencies = Dependencies(_ns.find(self.element, "dependencies"))
+
+    def _saved(self):
+        self.artifact._saved()
+        self.dependencies._saved()
+
+    @property
+    def modified(self):
+        return self.artifact.modified or self.dependencies.modified
+    
+    
+class PluginIterator(six.Iterator):
+    def __init__(self, pins):
+        self.iter = iter(pins.plugins)
+
+    def __next__(self):
+        return six.advance_iterator(self.iter)[1]
+
+
+class Plugins(object):
+    def __init__(self, element):
+        self.element = element
+        self.plugins = []
+        if self.element is not None:
+            i = 0
+            for d in element.getchildren():
+                if d.tag is not lxml.etree.Comment:
+                    p = Plugin(d)
+                    self.plugins.append([i, p])
+                i += 1
+
+    def _saved(self):
+        for p in self.plugins:
+            p[1]._modified = False
+
+    @property
+    def modified(self):
+        return any([ p[1]._modified for p in self.plugins ])
+    
+    def contains(self, artifact):
+        if isinstance(artifact, nxpy.maven.artifact.Artifact):
+            group_id = artifact.groupId
+            artifact_id = artifact.artifactId
+        else:
+            group_id, artifact_id = artifact.split(":")[0:2]
+        for p in self.plugins:
+            if p[1].groupId == group_id and p[1].artifactId == artifact_id:
+                return p[1]
+        return None
+
+    def __str__(self):
+        return "\n".join([ str(p) for p in self.plugins ])
+
+    def __iter__(self):
+        return PluginIterator(self)
+
+
+class Build(object):
+    def __init__(self, element):
+        self.element = element
+        self.plugins = None
+        plugins = _ns.find(element, "plugins")
+        if plugins is not None:
+            self.plugins = Plugins(plugins)
+
+    def _saved(self):
+        if self.plugins:
+            self.plugins._saved()
+
+    @property
+    def modified(self):
+        return self.plugins and self.plugins.modified
+    
+    
 class Scm(object):
     def __init__(self, element):
         self._modified = False
@@ -268,24 +346,29 @@ class Pom(object):
         if scm  is not None:
             self.scm = Scm(scm)
         self.modules = Modules(self.root)
-        depmgmt = None
-        if self.artifact.packaging == "pom":
-            deps = _ns.find(self.root, "dependencyManagement")
-            if deps is not None:
-                depmgmt = _ns.find(deps, "dependencies")
-        self.dependencyManagement = Dependencies(depmgmt)
-        self.properties = Properties(self.root)
+        self.build = None
         self.assembly_descriptor = None
         build = _ns.find(self.root, "build")
         if build is not None:
-            plugins = _ns.find(build, "plugins")
-            if plugins is not None:
-                for p in plugins.getchildren():
-                    if _ns.find(p, "artifactId").text == "maven-assembly-plugin":
-                        ad = _ns.find(_ns.find(p, "configuration"), "descriptors")[0]
-                        self.assembly_descriptor = os.path.normpath(os.path.join(self.dir, 
-                                ad.text))
+            self.build = Build(build)
+            if self.build.plugins is not None:
+                for p in self.build.plugins:
+                    if p.artifact.artifactId == "maven-assembly-plugin":
+                        ad = _ns.find(_ns.find(p.element, "configuration"), "descriptors")[0]
+                        self.assembly_descriptor = os.path.normpath(os.path.join(self.dir, ad.text))
                         break
+        self.dependencyManagement = None
+        self.buildManagement = None
+        if self.artifact.packaging == "pom":
+            depmgmt = None
+            deps = _ns.find(self.root, "dependencyManagement")
+            if deps is not None:
+                depmgmt = _ns.find(deps, "dependencies")
+            self.dependencyManagement = Dependencies(depmgmt)
+            buildmgmt = _ns.find(self.root, "buildManagement")
+            if buildmgmt is not None:
+                self.buildManagement = Build(buildmgmt)
+        self.properties = Properties(self.root)
         self.distributionManagement = None
         dm = _ns.find(self.root, "distributionManagement")
         if dm is not None:
@@ -299,9 +382,12 @@ class Pom(object):
     def modified(self):
         return ( self.artifact.modified or ( self.parent and self.parent.modified ) or
                  self.modules.modified or self.dependencies.modified or 
-                 self.dependencyManagement.modified or ( self.scm and self.scm.modified ) or 
+                 ( self.dependencyManagement and self.dependencyManagement.modified ) or 
+                 ( self.scm and self.scm.modified ) or 
                  self.properties.modified or 
-                 ( self.distributionManagement and self.distributionManagement.modified ) )
+                 ( self.distributionManagement and self.distributionManagement.modified ) or 
+                 ( self.build and self.build.modified ) or
+                 ( self.buildManagement and self.buildManagement.modified ) )
 
     def write(self, where):
         if not where:
@@ -316,9 +402,14 @@ class Pom(object):
                 self.parent._modified = False
             self.scm._modified = False
             self.dependencies._saved()
-            self.dependencyManagement._saved()
+            if self.dependencyManagement:
+                self.dependencyManagement._saved()
             self.distributionManagement._saved()
             self.modules._saved()
+            if self.build:
+                self.build._saved()
+            if self.buildManagement:
+                self.buildManagement._saved()
             self.properties.modified = False
             return True
         return False
