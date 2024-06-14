@@ -402,11 +402,13 @@ class Pom(object):
             self.artifact._modified = False
             if self.parent:
                 self.parent._modified = False
-            self.scm._modified = False
+            if self.scm:
+                self.scm._modified = False
             self.dependencies._saved()
             if self.dependencyManagement:
                 self.dependencyManagement._saved()
-            self.distributionManagement._saved()
+            if self.distributionManagement:
+                self.distributionManagement._saved()
             self.modules._saved()
             if self.build:
                 self.build._saved()
