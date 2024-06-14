@@ -195,7 +195,7 @@ class Plugin(object):
         self.dependencies = Dependencies(_ns.find(self.element, "dependencies"))
 
     def _saved(self):
-        self.artifact._saved()
+        self.artifact._modified = False
         self.dependencies._saved()
 
     @property
@@ -225,11 +225,11 @@ class Plugins(object):
 
     def _saved(self):
         for p in self.plugins:
-            p[1]._modified = False
+            p[1]._saved()
 
     @property
     def modified(self):
-        return any([ p[1]._modified for p in self.plugins ])
+        return any([ p[1].modified for p in self.plugins ])
     
     def contains(self, artifact):
         if isinstance(artifact, nxpy.maven.artifact.Artifact):
