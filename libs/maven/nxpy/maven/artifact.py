@@ -74,12 +74,17 @@ class Artifact(object):
         return self._relativePath
     
     def __str__(self):
+        g = ""
+        try:
+            g = self.groupId
+        except AttributeError:
+            pass
         v = ""
         try:
             v = self.version
         except AttributeError:
             pass
-        return "%s:%s:%s" % ( self.groupId, self.artifactId, v )
+        return "%s:%s:%s" % ( g, self.artifactId, v )
 
     def __eq__(self, value):
         return ( ( self.groupId, self.artifactId ) == ( value.groupId, value.artifactId ) )

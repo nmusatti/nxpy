@@ -132,6 +132,16 @@ class DependenciesTest(PomTestBase):
         self.fail("Artifact named 'second' expected")
 
 
+class BuildTest(PomTestBase):
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
+    def test_build_pass(self):
+        p = nxpy.maven.pom.Pom(os.path.join(self.dir, "test-dep", "pom.xml"))
+        i = iter(p.build.pluginManagement)
+        plugin = next(i)
+        self.assertEqual(plugin.artifact.version, "2.3.1")
+        plugin.artifact.version = "2.3.2"
+        self.assertTrue(p.build.modified)
+
 class DistributionManagementTest(PomTestBase):
     @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
     def test_structure_pass(self):
@@ -178,6 +188,34 @@ class PomTest(PomTestBase):
             p.save()
             self.assertFalse(p.modified)
 
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
+    def test_build_pass(self):
+        p = nxpy.maven.pom.Pom(os.path.join(self.dir, "patch", "pom.xml"))
+        self.assertTrue(p.build is not None)
+
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
+    def test_plugin_pass(self):
+        p = nxpy.maven.pom.Pom(os.path.join(self.dir, "patch", "pom.xml"))
+        self.assertTrue(p.build.plugins is not None)
+        map = None
+        for e in p.build.plugins:
+            if e.artifact.artifactId == "maven-assembly-plugin":
+                map = e
+                break
+        self.assertTrue(map is not None)
+
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
+    def test_modify_plugin_version_pass(self):
+        p = nxpy.maven.pom.Pom(os.path.join(self.dir, "test-dep", "pom.xml"))
+        i = iter(p.build.pluginManagement)
+        plugin = next(i)
+        self.assertEqual(plugin.artifact.version, "2.3.1")
+        plugin.artifact.version = "2.3.2"
+        self.assertTrue(p.build.modified)
+        p.save()
+        self.assertFalse(p.build.modified)
+        self.assertEqual(plugin.artifact.version, "2.3.2")
+        
     @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
     def test_assembly_descriptor_pass(self):
         p = nxpy.maven.pom.Pom(os.path.join(self.dir, "patch", "pom.xml"))
