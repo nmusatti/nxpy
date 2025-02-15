@@ -365,11 +365,10 @@ class Pom(object):
                         self.assembly_descriptor = os.path.normpath(os.path.join(self.dir, ad.text))
                         break
         self.dependencyManagement = None
-        if self.artifact.packaging == "pom":
-            depmgmt = None
-            deps = _ns.find(self.root, "dependencyManagement")
-            if deps is not None:
-                depmgmt = _ns.find(deps, "dependencies")
+        depmgmt = None
+        deps = _ns.find(self.root, "dependencyManagement")
+        if deps is not None:
+            depmgmt = _ns.find(deps, "dependencies")
             self.dependencyManagement = Dependencies(depmgmt)
         self.properties = Properties(self.root)
         self.distributionManagement = None
