@@ -1,3 +1,5 @@
+v1.0.4, 16/02/2025 - Support Subversion 14.
+
 v1.0.3, 26/12/2019 - Implemented the export command.
 
 v1.0.2, 22/01/2019 - Corrected and extended support for debug mode.

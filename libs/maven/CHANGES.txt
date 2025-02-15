@@ -1,3 +1,5 @@
+v1.0.2, 16/02/2025 - Improved handling of dependencyManagement and empty elements.
+
 v1.0.1, 21/01/2019 - Bug fix.
 
 v1.0.0, 13/10/2018 - First separate release.

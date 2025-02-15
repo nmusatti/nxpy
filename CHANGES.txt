@@ -1,4 +1,8 @@
-v1.0.7, 02/09/2022 - Fix packaging for testing
+v1.0.7, 16/02/2025 - Fix packaging for testing
+	General: Switch to pyproject.toml based packaging. Support Python version between 3.9 and 3.13.
+	mvn:	 Improved handling of empty elements in POMs and supported dependencyManagement sections
+			 in non-pom packaged projects.
+	svn:	 Support versions up to 14.
 
 v1.0.6, 26/12/2021 - Support for Python 3.10
 
