@@ -23,9 +23,9 @@ jobs:
           - github: "3.12"
             tox: py312
             cmd: python3
-			- github: "3.13"
-			  tox: py313
-			  cmd: python3
+          - github: "3.13"
+            tox: py313
+            cmd: python3
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
