@@ -1,6 +1,6 @@
 # nxpy_maven ------------------------------------------------------------------
 
-# Copyright Nicola Musatti 2010 - 2018
+# Copyright Nicola Musatti 2010 - 2025
 # Use, modification, and distribution are subject to the Boost Software
 # License, Version 1.0. (See accompanying file LICENSE.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt)
@@ -43,9 +43,10 @@ class Artifact(object):
         if self._packaging is None:
             self._packaging = "jar"
         try:
-            self._relativePath = os.path.normpath(_ns.find(element, "relativePath").text)
+            rp = _ns.find(element, "relativePath").text
+            self._relativePath = os.path.normpath(rp) if rp != '' else None
         except AttributeError:
-            self._relativePath = None
+            self._relativePath = os.path.normpath('../pom.xml')
 
     groupId = nxpy.xml.util.make_property("_groupId")
     artifactId = nxpy.xml.util.make_property("_artifactId")

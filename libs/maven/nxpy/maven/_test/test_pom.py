@@ -227,6 +227,11 @@ class PomTest(PomTestBase):
         self.assertTrue(pom.modules.contains("second"))
 
     @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
+    def test_parent_pass(self):
+        pom = nxpy.maven.pom.Pom(os.path.join(self.pom.dir, self.pom.parent.relativePath))
+        self.assertTrue(pom.artifact.artifactId == "test-dep")
+
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
     def test_add_module_pass(self):
         pom = nxpy.maven.pom.Pom(os.path.join(self.dir, "pom.xml"))
         module = "third"
