@@ -1,6 +1,9 @@
+v1.0.8, 01/03/2025 - Small changes
+	maven:	 Improved handling of empty vs missing parent relative paths.
+
 v1.0.7, 16/02/2025 - Fix packaging for testing
 	General: Switch to pyproject.toml based packaging. Support Python version between 3.9 and 3.13.
-	mvn:	 Improved handling of empty elements in POMs and supported dependencyManagement sections
+	maven:	 Improved handling of empty elements in POMs and supported dependencyManagement sections
 			 in non-pom packaged projects.
 	svn:	 Support versions up to 14.
 
@@ -29,7 +32,7 @@ v0.6.0, 16/09/2018 - Last monolithic release
 
 v0.5.0, 31/05/2017 - Switch to the lxml library for XML support.
     General: Added the new 'xml' package, functionally equivalent to 'etree', but based on lxml.
-    mvn:     Switched to 'xml' for XML support. Comments and CDATA sections are now preserved.
+    maven:     Switched to 'xml' for XML support. Comments and CDATA sections are now preserved.
     msvs:    Switched to 'xml' for XML support.
 
 v0.4.0, 26/03/2017 - Small changes.
