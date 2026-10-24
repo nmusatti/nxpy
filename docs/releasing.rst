@@ -64,12 +64,14 @@ Release candidate
 * Create a new virtual environment and install the new library in it::
 
     uv venv <venv dir>
-    uv pip install --python <venv dir> --index-url https://test.pypi.org/simple/ \
+    uv pip install --refresh --python <venv dir> --index-url https://test.pypi.org/simple/ \
         --extra-index-url https://pypi.org/simple/ --index-strategy unsafe-best-match \
         <package>==<version>
 
   Naming the exact release candidate, e.g. ``nxpy-maven==1.1.0rc1``, lets uv install it without
-  accepting pre-releases of the other dependencies.
+  accepting pre-releases of the other dependencies; release candidates of other Nxpy libraries
+  are still installed when the package's requirements name them. ``--refresh`` makes uv fetch the
+  index again instead of using a cached copy that predates the upload.
 * Perform a minimal test.
 
 Release
@@ -81,7 +83,7 @@ Release
 * Run ``uvx twine upload <dist dir>/*`` to upload the library to `PyPI`_. You will need a PyPI
   account and an API token.
 * Create another virtual environment, install the new library in it with
-  ``uv pip install --python <venv dir> <package>`` and perform a last test.
+  ``uv pip install --refresh --python <venv dir> <package>`` and perform a last test.
 
 Supported versions and platforms
 --------------------------------
