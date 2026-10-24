@@ -84,6 +84,8 @@ Release
   account and an API token.
 * Create another virtual environment, install the new library in it with
   ``uv pip install --refresh --python <venv dir> <package>`` and perform a last test.
+  Right after an upload the index may still list only the previous release; if that is what gets
+  installed, wait a minute and try again.
 
 Supported versions and platforms
 --------------------------------
