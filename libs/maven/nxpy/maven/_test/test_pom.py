@@ -183,7 +183,9 @@ class BuildTest(PomTestBase):
     def test_save_normalized_pass(self):
         before, after = self._save_copy(False)
         self.assertNotEqual(before, after)
-        self.assertFalse(b"\r\n" in after)
+        # The normalizing writer uses the platform's line terminator, not the original one
+        newline = os.linesep.encode("ascii")
+        self.assertEqual(after.replace(b"\r\n", b"\n").replace(b"\n", newline), after)
 
 class DistributionManagementTest(PomTestBase):
     @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)

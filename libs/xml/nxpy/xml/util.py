@@ -401,16 +401,13 @@ class PreservingWriter(object):
             s = self._start_tag_re.sub(lambda m: self.start_tag, s, 1)
         if self.spaced_empty:
             s = self._markup_re.sub(self._space_empty, s)
-        s = self.prolog + s + self.epilog
-        if self.newline != "\n":
-            s = s.replace("\n", self.newline)
-        return s
+        return self.prolog + s + self.epilog
 
     def write(self, node, where):
         r"""
         Write *node* to *where*, a path or a file object. Paths and binary files receive the
-        original encoding; text files receive text, which their own encoding and newline
-        translation then apply to.
+        original encoding and line terminators; text files receive text with ``\n`` line
+        terminators, which their own encoding and newline translation then apply to.
 
         """
         s = self.marshal(node)
@@ -420,6 +417,8 @@ class PreservingWriter(object):
             f = where
         try:
             if isinstance(where, six.string_types) or "b" in getattr(f, "mode", ""):
+                if self.newline != "\n":
+                    s = s.replace("\n", self.newline)
                 data = s.encode(self.encoding, "xmlcharrefreplace")
                 if self.bom:
                     data = codecs.BOM_UTF8 + data
