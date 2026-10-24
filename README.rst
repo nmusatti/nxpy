@@ -3,10 +3,6 @@ Nick's Python Toolbox
 
 .. image:: https://github.com/nmusatti/nxpy/actions/workflows/test.yml/badge.svg
 
-.. image:: https://app.readthedocs.org/projects/nxpy/badge/?version=latest
-    :target: https://nxpy.readthedocs.io/en/latest/?badge=latest
-    :alt: Documentation Status
-
 Nxpy is an etherogeneous collection of libraries, dealing with diverse topics such as 
 wrapping complex commands with API's, automation of backup files, support for writing your 
 own file-like objects and many other things. The documentation is available on `ReadTheDocs`_.
