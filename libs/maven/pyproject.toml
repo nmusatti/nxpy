@@ -8,14 +8,12 @@
 # See https://github.com/nmusatti/nxpy/tree/master/libs/maven. ----------------
 
 [build-system]
-#requires = ["hatchling"]
-#build-backend = "hatchling.build"
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "nxpy-maven"
-dynamic = ["version"]
+version = "1.0.3"
 description = "Utilities for the Maven build tool"
 readme = "README.rst"
 license.file = "LICENSE.txt"
@@ -49,10 +47,7 @@ Documentation = "https://nxpy.readthedocs.io/en/latest/"
 Homepage = "https://github.com/nmusatti/nxpy"
 "Source Code" = "https://github.com/nmusatti/nxpy"
 
-[tool.hatch.version]
-path = "nxpy/__init__.py"
-
-[tool.hatch.build.targets.sdist]
-include = [
-    "/nxpy",
+[tool.setuptools]
+packages = [
+    "nxpy.maven",
 ]

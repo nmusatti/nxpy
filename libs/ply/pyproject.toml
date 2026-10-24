@@ -1,12 +1,10 @@
 [build-system]
-#requires = ["hatchling"]
-#build-backend = "hatchling.build"
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "nxpy-ply"
-dynamic = ["version"]
+version = "1.0.0"
 description = "Utilities for the PLY parser generator"
 readme = "README.rst"
 license.file = "LICENSE.txt"
@@ -35,10 +33,7 @@ Documentation = "https://nxpy.readthedocs.io/en/latest/"
 Homepage = "https://github.com/nmusatti/nxpy"
 "Source Code" = "https://github.com/nmusatti/nxpy"
 
-[tool.hatch.version]
-path = "nxpy/__init__.py"
-
-[tool.hatch.build.targets.sdist]
-include = [
-    "/nxpy",
+[tool.setuptools]
+packages = [
+    "nxpy.ply",
 ]
