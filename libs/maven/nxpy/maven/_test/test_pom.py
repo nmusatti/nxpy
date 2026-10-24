@@ -138,8 +138,8 @@ class BuildTest(PomTestBase):
         p = nxpy.maven.pom.Pom(os.path.join(self.dir, "test-dep", "pom.xml"))
         i = iter(p.build.pluginManagement)
         plugin = next(i)
-        self.assertEqual(plugin.artifact.version, "2.3.1")
-        plugin.artifact.version = "2.3.2"
+        self.assertEqual(plugin.artifact.version, "3.13.0")
+        plugin.artifact.version = "3.13.1"
         self.assertTrue(p.build.modified)
 
 class DistributionManagementTest(PomTestBase):
@@ -209,12 +209,12 @@ class PomTest(PomTestBase):
         p = nxpy.maven.pom.Pom(os.path.join(self.dir, "test-dep", "pom.xml"))
         i = iter(p.build.pluginManagement)
         plugin = next(i)
-        self.assertEqual(plugin.artifact.version, "2.3.1")
-        plugin.artifact.version = "2.3.2"
+        self.assertEqual(plugin.artifact.version, "3.13.0")
+        plugin.artifact.version = "3.13.1"
         self.assertTrue(p.build.modified)
         p.save()
         self.assertFalse(p.build.modified)
-        self.assertEqual(plugin.artifact.version, "2.3.2")
+        self.assertEqual(plugin.artifact.version, "3.13.1")
         
     @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
     def test_assembly_descriptor_pass(self):
