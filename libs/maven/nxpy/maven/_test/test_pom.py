@@ -142,6 +142,20 @@ class BuildTest(PomTestBase):
         plugin.artifact.version = "3.13.1"
         self.assertTrue(p.build.modified)
 
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
+    def test_plugins_contains_pass(self):
+        p = nxpy.maven.pom.Pom(os.path.join(self.dir, "test-dep", "pom.xml"))
+        plugins = p.build.pluginManagement
+        plugin = plugins.contains("org.apache.maven.plugins:maven-compiler-plugin")
+        self.assertEqual(plugin.artifact.artifactId, "maven-compiler-plugin")
+        self.assertTrue(plugins.contains(plugin.artifact) is plugin)
+
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
+    def test_plugins_contains_fail(self):
+        p = nxpy.maven.pom.Pom(os.path.join(self.dir, "test-dep", "pom.xml"))
+        plugins = p.build.pluginManagement
+        self.assertTrue(plugins.contains("org.apache.maven.plugins:maven-pippo-plugin") is None)
+
 class DistributionManagementTest(PomTestBase):
     @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
     def test_structure_pass(self):

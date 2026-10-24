@@ -238,7 +238,7 @@ class Plugins(object):
         else:
             group_id, artifact_id = artifact.split(":")[0:2]
         for p in self.plugins:
-            if p[1].groupId == group_id and p[1].artifactId == artifact_id:
+            if p[1].artifact.groupId == group_id and p[1].artifact.artifactId == artifact_id:
                 return p[1]
         return None
 
