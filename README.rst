@@ -3,7 +3,7 @@ Nick's Python Toolbox
 
 .. image:: https://github.com/nmusatti/nxpy/actions/workflows/test.yml/badge.svg
 
-.. image:: https://readthedocs.org/projects/nxpy/badge/?version=latest
+.. image:: https://app.readthedocs.org/projects/nxpy/badge/?version=latest
     :target: https://nxpy.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
