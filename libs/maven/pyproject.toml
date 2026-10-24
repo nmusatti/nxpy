@@ -13,7 +13,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nxpy-maven"
-version = "1.1.0rc1"
+version = "1.1.0"
 description = "Utilities for the Maven build tool"
 readme = "README.rst"
 license.file = "LICENSE.txt"
