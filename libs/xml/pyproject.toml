@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nxpy-xml"
-version = "1.1.0rc1"
+version = "1.1.0"
 description = "Utilities for the Lxml library"
 readme = "README.rst"
 license.file = "LICENSE.txt"
