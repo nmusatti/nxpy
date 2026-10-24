@@ -238,7 +238,7 @@ class Plugins(object):
         else:
             group_id, artifact_id = artifact.split(":")[0:2]
         for p in self.plugins:
-            if p[1].groupId == group_id and p[1].artifactId == artifact_id:
+            if p[1].artifact.groupId == group_id and p[1].artifact.artifactId == artifact_id:
                 return p[1]
         return None
 
@@ -333,7 +333,12 @@ class Pom(object):
               r'    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0' 
               r' http://maven.apache.org/maven-v4_0_0.xsd">' )
 
-    def __init__(self, path):
+    def __init__(self, path, preserve_format=True):
+        r"""
+        Parse the POM in *path*. If *preserve_format* is *True* saving keeps the original
+        formatting, otherwise the POM is written in a normalized format.
+
+        """
         self.path = os.path.realpath(path)
         self.dir = os.path.split(self.path)[0]
         try:
@@ -375,7 +380,10 @@ class Pom(object):
         dm = _ns.find(self.root, "distributionManagement")
         if dm is not None:
             self.distributionManagement = DistributionManagement(dm)
-        self._writer = nxpy.xml.util.Writer(self._root, None, 4)
+        if preserve_format:
+            self._writer = nxpy.xml.util.PreservingWriter(path)
+        else:
+            self._writer = nxpy.xml.util.Writer(self._root, None, 4)
 
     def qualified_name(self, full=False):
         return self.artifact.qualified_name(full)

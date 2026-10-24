@@ -8,14 +8,12 @@
 # See https://github.com/nmusatti/nxpy/tree/master/libs/file_object. ----------
 
 [build-system]
-#requires = ["hatchling"]
-#build-backend = "hatchling.build"
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "nxpy-file-object"
-dynamic = ["version"]
+version = "1.0.0"
 description = "Helper classes to implement file-like objects"
 readme = "README.rst"
 license.file = "LICENSE.txt"
@@ -26,13 +24,12 @@ classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: Boost Software License 1.0 (BSL-1.0)",
-    "Programming Language :: Python :: 2",
-    "Programming Language :: Python :: 2.7",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.5",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
     "Topic :: Software Development :: Libraries",
 ]
 dependencies = []
@@ -42,10 +39,7 @@ Documentation = "https://nxpy.readthedocs.io/en/latest/"
 Homepage = "https://github.com/nmusatti/nxpy"
 "Source Code" = "https://github.com/nmusatti/nxpy"
 
-[tool.hatch.version]
-path = "nxpy/__init__.py"
-
-[tool.hatch.build.targets.sdist]
-include = [
-    "/nxpy",
+[tool.setuptools]
+packages = [
+    "nxpy.core.file_object",
 ]

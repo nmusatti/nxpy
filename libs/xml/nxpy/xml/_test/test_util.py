@@ -48,6 +48,60 @@ class UtilTest(nxpy.test.test.TestCase):
             writer.write(root, dest)
             self.assertTrue(nxpy.core.file.compare(src, dest.name, ignore_eof=True))
 
+    def _round_trip(self, data, change=None):
+        with nxpy.core.temp_file.TempDir(prefix="test_util_") as dir_:
+            src = os.path.join(dir_.name, "src.xml")
+            dest = os.path.join(dir_.name, "dest.xml")
+            with open(src, "wb") as f:
+                f.write(data)
+            writer = nxpy.xml.util.PreservingWriter(src)
+            root = nxpy.xml.util.parse(src).getroot()
+            if change:
+                change(root)
+            writer.write(root, dest)
+            with open(dest, "rb") as f:
+                return f.read()
+
+    def test_preserving_round_trip_pass(self):
+        for dirpath, dirnames, filenames in os.walk(os.path.join(self.base_dir, "test", "backup")):
+            for n in filenames:
+                if n.endswith(".xml"):
+                    with open(os.path.join(dirpath, n), "rb") as f:
+                        data = f.read()
+                    self.assertEqual(self._round_trip(data), data)
+
+    _preserving = ( b'<?xml version="1.0" encoding="ISO-8859-1"?>\r\n'
+                    b'<!-- prolog -->\r\n'
+                    b'<root xmlns="urn:test"\r\n'
+                    b'\ta="1">\r\n'
+                    b'\t<empty />\r\n'
+                    b'\t<text>caf\xe9</text>\r\n'
+                    b'\t<!-- <not-empty/> -->\r\n'
+                    b'</root>\r\n'
+                    b'\r\n' )
+
+    def test_preserving_pass(self):
+        self.assertEqual(self._round_trip(self._preserving), self._preserving)
+        data = ( b'\xef\xbb\xbf' + self._preserving.replace(b'ISO-8859-1', b'UTF-8')
+                 .replace(b'\xe9', b'\xc3\xa9') )
+        self.assertEqual(self._round_trip(data), data)
+
+    def test_preserving_modified_pass(self):
+        def change(root):
+            ns = nxpy.xml.util.Namespace("urn:test")
+            ns.find(root, "text").text = u"th\xe9"
+            ns.SubElement(root, "added")
+        expected = ( self._preserving.replace(b"caf\xe9", b"th\xe9")
+                     .replace(b"</root>", b"<added /></root>") )
+        self.assertEqual(self._round_trip(self._preserving, change), expected)
+
+    def test_preserving_changed_root_pass(self):
+        def change(root):
+            root.set("a", "2")
+        result = self._round_trip(self._preserving, change)
+        self.assertTrue(b'<root xmlns="urn:test" a="2">\r\n' in result)
+        self.assertTrue(result.endswith(b"</root>\r\n\r\n"))
+
     def test_sequence_element(self):
         path = os.path.join(self.base_dir, "test", "backup", "maven", "aggregator", "trunk", "pom.xml")
         tree = nxpy.xml.util.parse(path)

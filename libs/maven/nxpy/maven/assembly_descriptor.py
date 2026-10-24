@@ -25,7 +25,12 @@ class BadAssemblyDescriptorFileError(EnvironmentError):
 
 class AssemblyDescriptor(object):
     
-    def __init__(self, path):
+    def __init__(self, path, preserve_format=True):
+        r"""
+        Parse the assembly descriptor in *path*. If *preserve_format* is *True* saving keeps the
+        original formatting, otherwise the descriptor is written in a normalized format.
+
+        """
         self.path = os.path.realpath(path)
         self.dir = os.path.split(self.path)[0]
         try:
@@ -46,7 +51,10 @@ class AssemblyDescriptor(object):
             raise BadAssemblyDescriptorFileError(path)
         self.includes = nxpy.xml.util.SequenceElement(deps, "includes", "include", self._ns.url)
         self.excludes = nxpy.xml.util.SequenceElement(deps, "excludes", "exclude", self._ns.url)
-        self._writer = nxpy.xml.util.Writer(self._make_root_tag(), {}, 4)
+        if preserve_format:
+            self._writer = nxpy.xml.util.PreservingWriter(path)
+        else:
+            self._writer = nxpy.xml.util.Writer(self._make_root_tag(), {}, 4)
 
     _schema_loc = nxpy.xml.util.QName(
             r"{http://www.w3.org/2001/XMLSchema-instance}schemaLocation")

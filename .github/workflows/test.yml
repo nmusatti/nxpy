@@ -5,34 +5,61 @@ on:
 
 name: test
 
+permissions:
+  contents: read
+
 jobs:
   test:
-    runs-on: ubuntu-22.04
+    runs-on: ${{ matrix.os.runner }}
     strategy:
+      fail-fast: false
       matrix:
-        version:
-          - github: 3.9
-            tox: py39
-            cmd: python3
-          - github: "3.10"
-            tox: py310
-            cmd: python3
-          - github: "3.11"
-            tox: py311
-            cmd: python3
-          - github: "3.12"
-            tox: py312
-            cmd: python3
-          - github: "3.13"
-            tox: py313
-            cmd: python3
+        os:
+          - runner: ubuntu-latest
+            tox: lnx
+          - runner: macos-latest
+            tox: mac
+          - runner: windows-latest
+            tox: win
+        python: ["3.11", "3.12", "3.13", "3.14", "3.15"]
+        # The test Maven project targets the oldest LTS JDK still in premier
+        # support; the newest LTS JDK is tested with the newest Python only
+        java: ["21"]
+        include:
+          - os: { runner: ubuntu-latest, tox: lnx }
+            python: "3.15"
+            java: "25"
+          - os: { runner: macos-latest, tox: mac }
+            python: "3.15"
+            java: "25"
+          - os: { runner: windows-latest, tox: win }
+            python: "3.15"
+            java: "25"
+    name: ${{ matrix.os.tox }} py${{ matrix.python }} jdk${{ matrix.java }}
+    defaults:
+      run:
+        shell: bash
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: 
-          python-version: ${{ matrix.version.github }}
-      - run: |
-          ${{ matrix.version.cmd }} -m pip install --upgrade pip
-          ${{ matrix.version.cmd }} -m pip install tox
-      - run: |
-          tox -e ${{ matrix.version.tox }}-lnx
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+      - uses: astral-sh/setup-uv@v10.3.2
+      - name: Install Subversion
+        run: |
+          if ! command -v svn > /dev/null; then
+            case "${{ runner.os }}" in
+              Linux) sudo apt-get update && sudo apt-get install -y subversion ;;
+              macOS) brew install subversion ;;
+              Windows) choco install sliksvn -y --no-progress
+                       echo "C:/Program Files/SlikSvn/bin" >> "$GITHUB_PATH" ;;
+            esac
+          fi
+      - name: Show tool versions
+        run: |
+          svn --version --quiet
+          mvn --version
+      - run: uv python install ${{ matrix.python }}
+      - run: uv tool install tox --with tox-uv
+      - run: tox -e py$(echo ${{ matrix.python }} | tr -d .)-${{ matrix.os.tox }}

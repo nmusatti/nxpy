@@ -1,3 +1,7 @@
+v1.1.0, 24/10/2026 - Pom and AssemblyDescriptor keep the original formatting when saving;
+                     preserve_format=False restores the previous behaviour. Fixed Plugins.contains().
+                     Requires nxpy-xml 1.1.0.
+
 v1.0.3, 01/03/2025 - Improved handling of empty vs. missing parent relative paths.
 
 v1.0.2, 16/02/2025 - Improved handling of dependencyManagement and empty elements.

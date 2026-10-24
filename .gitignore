@@ -1,6 +1,7 @@
 /.??*
 /.??*/
 !/.github/
+!/.readthedocs.yaml
 /tmp/
 _build/
 build/

@@ -22,6 +22,7 @@ if nxpy.core.past.V_3_3.at_least():
 else:
     from collections import MutableMapping, MutableSequence
 
+import codecs
 import re
 
 import lxml.etree
@@ -321,5 +322,108 @@ class Writer(object):
         f = open(where, "w+") if isinstance(where, six.string_types) else where
         try:
             f.write(self.marshal(node))
+        finally:
+            f.close()
+
+
+class PreservingWriter(object):
+    r"""
+    Write an XML tree back to the file it was parsed from, keeping that file's formatting.
+
+    *src* is the path of the original file. lxml keeps text, comments and indentation within the
+    root element, but loses what lies outside it and a few lexical details; this class restores
+    the XML declaration and anything else that precedes the root element, the original root start
+    tag (as long as its attributes and namespaces are unchanged), whatever follows the root
+    element, the line terminators, the encoding and the empty element style (``<a/>`` vs.
+    ``<a />``).
+
+    """
+    _prolog_re = re.compile(r"(?:\s+|<\?.*?\?>|<!--.*?-->|<!DOCTYPE[^\[>]*(?:\[.*?\])?\s*>)",
+            re.DOTALL)
+    _start_tag_re = re.compile(r"""<([^\s/>]+)(?:\s+[^\s=]+\s*=\s*(?:"[^"]*"|'[^']*'))*\s*(/?)>""")
+    _encoding_re = re.compile(r"""^<\?xml[^>]*encoding\s*=\s*["']([^"']+)["']""")
+    _markup_re = re.compile(r"<!--.*?-->|<!\[CDATA\[.*?\]\]>|<\?.*?\?>|<[^<>]*?(\s*)/>", 
+            re.DOTALL)
+
+    def __init__(self, src):
+        with open(src, "rb") as f:
+            data = f.read()
+        self.bom = data.startswith(codecs.BOM_UTF8)
+        if self.bom:
+            data = data[len(codecs.BOM_UTF8):]
+        m = self._encoding_re.match(data.decode("ascii", "replace"))
+        self.encoding = m.group(1) if m else "UTF-8"
+        text = data.decode(self.encoding)
+        self.newline = "\r\n" if "\r\n" in text else "\n"
+        text = text.replace("\r\n", "\n")
+        pos = 0
+        m = self._prolog_re.match(text, pos)
+        while m:
+            pos = m.end()
+            m = self._prolog_re.match(text, pos)
+        m = self._start_tag_re.match(text, pos)
+        if m is None:
+            raise nxpy.core.error.ArgumentError(src + ": root element not found")
+        self.prolog = text[:pos]
+        self.start_tag = m.group(0)
+        if m.group(2):
+            self.epilog = text[m.end():]
+        else:
+            end_tags = list(re.finditer(r"</" + re.escape(m.group(1)) + r"\s*>", text))
+            self.epilog = text[end_tags[-1].end():] if end_tags else ""
+        spaced = 0
+        unspaced = 0
+        for e in self._markup_re.finditer(text):
+            if e.group(1) is not None:
+                if e.group(1):
+                    spaced += 1
+                else:
+                    unspaced += 1
+        self.spaced_empty = spaced > unspaced
+
+    def _same_start_tag(self, node):
+        tag = self.start_tag
+        if not tag.endswith("/>"):
+            tag += "</" + self._start_tag_re.match(tag).group(1) + ">"
+        orig = lxml.etree.fromstring(tag)
+        return ( orig.tag == node.tag and dict(orig.attrib) == dict(node.attrib) and
+                 orig.nsmap == node.nsmap )
+
+    def _space_empty(self, m):
+        s = m.group(0)
+        if m.group(1) is not None and not m.group(1):
+            s = s[:-2] + " />"
+        return s
+
+    def marshal(self, node):
+        s = lxml.etree.tostring(node, encoding=six.text_type, with_tail=False)
+        if self._same_start_tag(node):
+            s = self._start_tag_re.sub(lambda m: self.start_tag, s, 1)
+        if self.spaced_empty:
+            s = self._markup_re.sub(self._space_empty, s)
+        return self.prolog + s + self.epilog
+
+    def write(self, node, where):
+        r"""
+        Write *node* to *where*, a path or a file object. Paths and binary files receive the
+        original encoding and line terminators; text files receive text with ``\n`` line
+        terminators, which their own encoding and newline translation then apply to.
+
+        """
+        s = self.marshal(node)
+        if isinstance(where, six.string_types):
+            f = open(where, "wb")
+        else:
+            f = where
+        try:
+            if isinstance(where, six.string_types) or "b" in getattr(f, "mode", ""):
+                if self.newline != "\n":
+                    s = s.replace("\n", self.newline)
+                data = s.encode(self.encoding, "xmlcharrefreplace")
+                if self.bom:
+                    data = codecs.BOM_UTF8 + data
+                f.write(data)
+            else:
+                f.write(s)
         finally:
             f.close()

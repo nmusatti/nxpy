@@ -138,9 +138,54 @@ class BuildTest(PomTestBase):
         p = nxpy.maven.pom.Pom(os.path.join(self.dir, "test-dep", "pom.xml"))
         i = iter(p.build.pluginManagement)
         plugin = next(i)
-        self.assertEqual(plugin.artifact.version, "2.3.1")
-        plugin.artifact.version = "2.3.2"
+        self.assertEqual(plugin.artifact.version, "3.13.0")
+        plugin.artifact.version = "3.13.1"
         self.assertTrue(p.build.modified)
+
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
+    def test_plugins_contains_pass(self):
+        p = nxpy.maven.pom.Pom(os.path.join(self.dir, "test-dep", "pom.xml"))
+        plugins = p.build.pluginManagement
+        plugin = plugins.contains("org.apache.maven.plugins:maven-compiler-plugin")
+        self.assertEqual(plugin.artifact.artifactId, "maven-compiler-plugin")
+        self.assertTrue(plugins.contains(plugin.artifact) is plugin)
+
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
+    def test_plugins_contains_fail(self):
+        p = nxpy.maven.pom.Pom(os.path.join(self.dir, "test-dep", "pom.xml"))
+        plugins = p.build.pluginManagement
+        self.assertTrue(plugins.contains("org.apache.maven.plugins:maven-pippo-plugin") is None)
+
+    def _save_copy(self, preserve_format):
+        with nxpy.core.temp_file.TempDir(prefix="test_pom_") as dir_:
+            src = os.path.join(self.dir, "test-dep", "pom.xml")
+            dest = os.path.join(dir_.name, "pom.xml")
+            shutil.copy(src, dest)
+            p = nxpy.maven.pom.Pom(dest, preserve_format)
+            next(iter(p.build.pluginManagement)).artifact.version = "3.13.1"
+            p.save()
+            with open(src, "rb") as f:
+                before = f.read()
+            with open(dest, "rb") as f:
+                after = f.read()
+            return before, after
+
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
+    def test_save_preserves_format_pass(self):
+        before, after = self._save_copy(True)
+        changed = [ ( b, a ) for b, a in zip(before.splitlines(True), after.splitlines(True))
+                    if b != a ]
+        self.assertEqual(len(before.splitlines()), len(after.splitlines()))
+        self.assertEqual(changed, [ ( b"                    <version>3.13.0</version>\r\n",
+                                      b"                    <version>3.13.1</version>\r\n" ) ])
+
+    @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
+    def test_save_normalized_pass(self):
+        before, after = self._save_copy(False)
+        self.assertNotEqual(before, after)
+        # The normalizing writer uses the platform's line terminator, not the original one
+        newline = os.linesep.encode("ascii")
+        self.assertEqual(after.replace(b"\r\n", b"\n").replace(b"\n", newline), after)
 
 class DistributionManagementTest(PomTestBase):
     @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
@@ -209,12 +254,12 @@ class PomTest(PomTestBase):
         p = nxpy.maven.pom.Pom(os.path.join(self.dir, "test-dep", "pom.xml"))
         i = iter(p.build.pluginManagement)
         plugin = next(i)
-        self.assertEqual(plugin.artifact.version, "2.3.1")
-        plugin.artifact.version = "2.3.2"
+        self.assertEqual(plugin.artifact.version, "3.13.0")
+        plugin.artifact.version = "3.13.1"
         self.assertTrue(p.build.modified)
         p.save()
         self.assertFalse(p.build.modified)
-        self.assertEqual(plugin.artifact.version, "2.3.2")
+        self.assertEqual(plugin.artifact.version, "3.13.1")
         
     @nxpy.test.test.skipIfNotAtLeast(nxpy.core.past.V_2_7)
     def test_assembly_descriptor_pass(self):

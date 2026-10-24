@@ -1,0 +1,7 @@
+# Requirements for building the documentation, also used by Read the Docs.
+# conf.py puts the libraries on sys.path; autodoc needs their dependencies.
+sphinx>=9.2
+sphinx-rtd-theme>=3.1
+lxml
+ply
+six

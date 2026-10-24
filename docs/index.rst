@@ -42,11 +42,9 @@ objects and many other things.
    releasing.rst
 
 
-The libraries are being developed with Python 3.10 so as to be compatible with Python 2.7. Tests are
-run and most modules work also with 3.6, 3.7, 3.8 and 3.9. Some should still work with versions as
-early as 3.2 and 2.5. There is no immediate plan to remove Python 2.x support, but in general
-earlier releases will only be supported as long as external tools, such as GitHub Actions or pip,
-keep supporting them. 
+Tests are run with Python 3.11, 3.12, 3.13, 3.14 and 3.15 on Linux, macOS and Windows. The code is
+still meant to be compatible with Python 2.7, but this is no longer tested and the packages are
+built for Python 3 only. Python 2.x support is likely to be removed in the future.
 
 Originally the libraries resided on `SourceForge`_ and were distributed as a single package.
 Starting from release 1.0.0 each library is being packaged separately even though they are all

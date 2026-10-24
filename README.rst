@@ -33,7 +33,7 @@ The libraries are:
 
 The libraries should be considered in maintenance mode, where only small changes are applied from
 time to time. Tests are usually run against the currently supported Python versions, which at this
-time are 3.13, 3.12, 3.11, 3.10 and 3.9.
+time are 3.15, 3.14, 3.13, 3.12 and 3.11.
 
 Note that these libraries are old: the bulk of the development took place between 2007 and 2009.
 Most would benefit from a bit of modernization, but this is not likely to happen as I only code in

@@ -1,0 +1,46 @@
+# nxpy_newlib ----------------------------------------------------------------
+
+# Copyright Nicola Musatti 2026
+# Use, modification, and distribution are subject to the Boost Software
+# License, Version 1.0. (See accompanying file LICENSE.txt or copy at
+# http://www.boost.org/LICENSE_1_0.txt)
+
+# See https://github.com/nmusatti/nxpy/tree/master/libs/newlib. --------------
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nxpy-newlib"
+version = "1.0.0"
+description = "New library template"
+readme = "README.rst"
+license.file = "LICENSE.txt"
+authors = [
+    { name = "Nicola Musatti", email = "nicola.musatti@gmail.com" },
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Boost Software License 1.0 (BSL-1.0)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+]
+
+[project.urls]
+Documentation = "https://nxpy.readthedocs.io/en/latest/newlib.html"
+Homepage = "https://github.com/nmusatti/nxpy"
+"Source Code" = "https://github.com/nmusatti/nxpy/tree/master/libs/newlib"
+
+[tool.setuptools]
+packages = [
+    "nxpy.newlib",
+]
