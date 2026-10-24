@@ -30,8 +30,9 @@ Preparation
   version element otherwise. Add ``rc1`` to the version number to mark the fact that this is a
   release candidate, e.g. ``1.1.0rc1``.
 * If the library requires a newer release of another Nxpy library, update its ``dependencies``
-  and complete the release of that library first: a requirement such as ``nxpy_xml>=1.1.0`` is not
-  satisfied by the ``1.1.0rc1`` release candidate.
+  with that library's release candidate as the lower bound, e.g. ``nxpy_xml>=1.1.0rc1``. The final
+  release satisfies it too, while ``nxpy_xml>=1.1.0`` would reject both the release candidate and
+  the development version installed by tox.
 * Update any other release related file, e.g.:
 
   + ``CHANGES.txt``

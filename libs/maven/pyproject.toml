@@ -37,7 +37,7 @@ dependencies = [
     "nxpy_command",
     "nxpy_core",
     "nxpy_sequence",
-    "nxpy_xml>=1.1.0",
+    "nxpy_xml>=1.1.0rc1",
     "six",
 ]
 
